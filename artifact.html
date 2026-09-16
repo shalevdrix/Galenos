@@ -1,0 +1,1052 @@
+<title>גלנוס ESWT</title>
+
+<meta name="description" content="גלנוס, מרכז לרפואת גלי הלם באשדוד. טיפול בגל הלם ממוקד באורתופדיה, אורולוגיה וכאב כרוני, במכשיר Omnispec מבית Medispec.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://galenos.co.il/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="גלנוס">
+<meta property="og:title" content="גלנוס · מרכז לרפואת גלי הלם">
+<meta property="og:description" content="גל הלם ממוקד באורתופדיה, אורולוגיה וכאב כרוני. הגדוד העברי 5, אשדוד.">
+<meta property="og:url" content="https://galenos.co.il/">
+<meta property="og:image" content="https://galenos.co.il/logo-light.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="logo-light.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;600&family=Heebo:wght@300;400;500;700&display=swap">
+
+<style>
+/* ============================================================
+   tokens · light is the base, both dark states redefine only
+   ============================================================ */
+:root{
+  color-scheme:light only;   /* the page is a light design, never inverted */
+  direction:rtl;
+
+  --paper:#FBFBFD;
+  --surface:#FFFFFF;
+  --ink:#0F1018;
+  --ink-2:#393B4E;
+  --muted:#6C6F86;
+  --line:#E2E3EC;
+  --line-2:#CBCEE2;
+  --accent:#5260AB;
+  --accent-deep:#41508F;
+  --accent-tint:#EEEFF8;
+  --accent-glow:rgba(82,96,171,.30);
+  --btn-fg:#FFFFFF;
+  --frame:#F0F0F6;
+  --wa:#25A366;
+  --photo-veil:.12;      /* how strongly a room photo shows through a band */
+  --caution-bg:#4C5AA4;  /* the one solid-colour band */
+  --caution-btn:#323B6C; /* two shades below the band it sits on */
+  --focal-ink:#5260AB;   /* canvas stroke, overridden inside the hero */
+  --danger:#B4293A;      /* form errors only */
+
+  --display:"Frank Ruhl Libre","Times New Roman",serif;
+  --body:"Heebo","Segoe UI",Arial,sans-serif;
+
+  --wrap:1120px;
+  --gutter:22px;
+}
+/* ============================================================
+   base
+   ============================================================ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{
+  font-family:var(--display);
+  font-weight:600;margin:0;line-height:1.2;
+  text-wrap:balance;letter-spacing:-.008em;
+}
+/* every section heading carries a short accent rule that sweeps in once */
+.sec-head h2,.device h2,.contact h2,.caution h2{
+  position:relative;padding-bottom:17px;
+  text-shadow:0 0 30px rgba(82,96,171,.20);
+}
+.sec-head h2::after,.device h2::after,.contact h2::after,.caution h2::after{
+  content:"";position:absolute;inset-inline-start:0;bottom:0;
+  width:54px;height:3px;border-radius:2px;
+  background:var(--accent);
+  transform-origin:100% 50%;
+}
+.lit::after{animation:sweep .55s cubic-bezier(.2,.85,.3,1)}
+@keyframes sweep{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.lit::after{animation:none}}
+
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.band{border-top:1px solid var(--line)}
+.band-surface{background:var(--surface)}
+
+:where(a,button,input,select):focus-visible{
+  outline:2px solid var(--accent);outline-offset:3px;border-radius:1px;
+}
+
+.eyebrow{
+  display:block;font-family:var(--body);
+  font-size:13.5px;font-weight:600;letter-spacing:.13em;
+  color:var(--accent);margin-bottom:14px;
+}
+
+/* ============================================================
+   buttons
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--body);font-size:15px;font-weight:500;
+  padding:12px 22px;border:1px solid transparent;border-radius:2px;
+  text-decoration:none;cursor:pointer;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,
+             transform .18s ease,box-shadow .18s ease;
+}
+.btn .arrow{
+  width:15px;height:15px;flex:0 0 auto;
+  transition:transform .22s cubic-bezier(.3,.9,.4,1);
+}
+.btn:hover .arrow{transform:translateX(4px)}   /* rtl: toward the text */
+.btn-solid{background:var(--accent);color:var(--btn-fg)}
+.btn-solid:hover{
+  background:var(--accent-deep);
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px -12px var(--accent-glow);
+}
+.btn-sm{padding:8px 15px;font-size:14px}
+.btn-line{border-color:var(--line-2);color:var(--ink);background:transparent}
+.btn-line:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#fff;border-color:transparent}
+.btn-wa:hover{
+  filter:brightness(1.07);
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px -12px rgba(37,163,102,.5);
+}
+.btn:active{transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){
+  .btn,.btn .arrow{transition:background .18s ease,color .18s ease,border-color .18s ease}
+  .btn:hover,.btn:active{transform:none}
+  .btn:hover .arrow{transform:none}
+}
+
+/* ============================================================
+   header
+   ============================================================ */
+/* no bar: the mark and one button sit straight on the hero footage */
+.masthead{position:absolute;top:0;inset-inline:0;z-index:50}
+.masthead-row{display:flex;align-items:center;gap:18px;padding-block:13px}
+.brand{display:block;line-height:0;flex-shrink:0}
+.brand img{
+  height:42px;width:auto;
+  filter:drop-shadow(0 2px 16px rgba(0,0,0,.65));
+}
+.masthead-actions{margin-inline-start:auto;display:flex;align-items:center;gap:10px}
+.masthead .btn-solid{
+  box-shadow:0 8px 26px -8px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.14) inset;
+}
+.masthead .btn-solid:hover{
+  box-shadow:0 12px 30px -8px rgba(82,96,171,.75), 0 0 0 1px rgba(255,255,255,.22) inset;
+}
+/* the outline button sits on dark footage, so it is drawn in white, not tokens */
+.masthead .btn-line{
+  border-color:rgba(255,255,255,.55);color:#fff;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  box-shadow:0 8px 26px -10px rgba(0,0,0,.6);
+}
+.masthead .btn-line:hover{
+  border-color:#fff;color:#fff;background:rgba(255,255,255,.18);
+}
+
+/* ============================================================
+   hero
+   ============================================================ */
+.hero{
+  position:relative;isolation:isolate;
+  background:#0A0B13;          /* the ground the video sits on, both themes */
+}
+.hero-media{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.hero-media video{
+  width:100%;height:100%;object-fit:cover;object-position:52% 42%;
+  display:block;
+}
+.hero-scrim{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to left, rgba(8,9,16,.93) 0%, rgba(8,9,16,.80) 50%, rgba(8,9,16,.64) 100%),
+    radial-gradient(120% 90% at 82% 42%, rgba(82,96,171,.28), transparent 62%);
+}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) 265px;
+  gap:40px;align-items:center;padding-block:76px 44px;   /* clears the floating header */
+}
+.hero h1{font-size:clamp(30px,4.1vw,47px);margin-bottom:20px}
+.hero .lede{font-size:17.5px;font-weight:300;max-width:48ch}
+.hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
+
+/* the hero commits to one dark treatment. these come AFTER the layout rules above,
+   otherwise .hero .lede's token colour wins on equal specificity and the text vanishes. */
+.hero .eyebrow{color:#B7C0EC}
+.hero h1{
+  color:#FFFFFF;
+  text-shadow:0 0 46px rgba(134,148,232,.60), 0 2px 20px rgba(0,0,0,.55);
+}
+.hero .lede{
+  color:#FFFFFF;
+  text-shadow:0 1px 14px rgba(0,0,0,.65);
+}
+.hero .btn-solid{background:#5260AB;color:#fff}
+.hero .btn-solid:hover{background:#41508F}
+.hero .btn-line{border-color:rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.06)}
+.hero .btn-line:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.14)}
+#focal-canvas{--focal-ink:#C6CEF4}
+
+.focal{margin:0;display:flex;justify-content:center}
+#focal-canvas{
+  width:100%;max-width:260px;aspect-ratio:260 / 225;
+  display:block;cursor:pointer;touch-action:manipulation;
+}
+
+/* a band with a room photo washed into it, text stays on top */
+.photo-band{position:relative;isolation:isolate}
+.photo-band::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+  background-image:url(mechanism-bg.jpg);
+  background-size:cover;background-position:center left;
+  opacity:var(--photo-veil);
+}
+
+/* ============================================================
+   sections
+   ============================================================ */
+.sec{padding-block:44px 62px}
+.sec-head{max-width:60ch;margin-bottom:38px}
+.sec-head h2{font-size:clamp(24px,2.8vw,33px)}
+
+.mech{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
+.mech .prose p{color:var(--ink-2);font-weight:300;font-size:17.5px}
+.mech .prose strong{color:var(--ink);font-weight:500}
+.terms{list-style:none;margin:0;padding:0}
+.terms li{display:grid;gap:4px;padding:14px 0;border-bottom:1px solid var(--line)}
+.terms li:first-child{border-top:1px solid var(--line)}
+.terms dfn{
+  font-family:var(--display);font-style:normal;font-size:16px;
+  color:var(--accent);direction:ltr;text-align:right;
+}
+.terms span{font-size:15px;color:var(--ink-2);font-weight:300;line-height:1.5}
+
+/* ============================================================
+   three domains · three columns at every width, no sideways scroll
+   ============================================================ */
+.domains{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.domain{
+  padding:20px 24px;border-inline-end:1px solid var(--line);
+  transition:background .2s ease;
+}
+.domain:last-child{border-inline-end:0}
+.domain:hover{background:var(--accent-tint)}
+.domain h3{font-size:21px;margin-bottom:3px}
+.domain .scope{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.4}
+.domain ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.domain li{
+  font-size:15.5px;color:var(--ink);line-height:1.4;
+  padding-inline-start:15px;position:relative;
+}
+.domain li::before{
+  content:"";position:absolute;inset-inline-start:0;top:.52em;
+  width:6px;height:6px;border-radius:50%;background:var(--accent);
+}
+.sec-cta{margin-top:32px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+
+/* ============================================================
+   device
+   ============================================================ */
+.device{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+.device-shot{
+  background:var(--frame);border:1px solid var(--line);
+  aspect-ratio:3/4;overflow:hidden;position:relative;margin:0;
+}
+.device-shot img,
+.device-shot video{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.device-shot .await{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;padding:26px;
+  text-align:center;font-size:14px;color:var(--muted);line-height:1.5;
+}
+.device-shot .await svg{width:44px;height:44px;color:var(--line-2)}
+.device h2{font-size:clamp(24px,2.8vw,33px);margin-bottom:15px}
+.device > div > p{color:var(--ink-2);font-weight:300;max-width:52ch}
+.spec{list-style:none;margin:22px 0 0;padding:0}
+.spec li{
+  display:grid;grid-template-columns:120px 1fr;gap:20px;
+  padding:13px 0;border-bottom:1px solid var(--line);font-size:15.5px;
+}
+.spec li:first-child{border-top:1px solid var(--line)}
+.spec b{font-weight:500;color:var(--muted);font-size:12px;letter-spacing:.1em;padding-top:3px}
+.spec span{color:var(--ink-2);font-weight:300}
+
+/* ============================================================
+   disclosure panels
+   ============================================================ */
+.disclose{margin:0}
+.disclose > summary{
+  list-style:none;display:inline-flex;align-items:center;gap:10px;
+  background:var(--accent);color:var(--btn-fg);
+  font-family:var(--body);font-size:15px;font-weight:500;
+  padding:12px 22px;border-radius:2px;cursor:pointer;
+  transition:background .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+.disclose > summary::-webkit-details-marker{display:none}
+.disclose > summary::marker{content:""}
+.disclose > summary:hover{
+  background:var(--accent-deep);
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px -12px var(--accent-glow);
+}
+.disclose > summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.disclose .chev{width:14px;height:14px;flex:0 0 auto;transition:transform .25s ease}
+.disclose[open] > summary .chev{transform:rotate(180deg)}
+.disclose .panel{margin-top:24px}
+.device .disclose .panel{
+  background:var(--accent-tint);
+  border:1px solid var(--line-2);
+  border-top:3px solid var(--accent);
+  border-radius:3px;
+  padding:20px 22px 6px;
+}
+.device .disclose .panel .spec{margin-top:18px}
+/* no fill-mode: the panel is never parked at opacity 0 waiting on an animation */
+.disclose[open] > .panel{animation:reveal .26s ease}
+/* slide only, never opacity: a stalled animation must not hide readable text */
+@keyframes reveal{from{transform:translateY(-7px)}to{transform:none}}
+.caution-block{text-align:center}
+.caution-block .panel{text-align:right}
+
+/* the whole band is the brand purple, so its type is set against that, not tokens */
+.caution-band{background:var(--caution-bg);border-top-color:transparent}
+.caution-band .sec{padding-block:26px 32px}
+.caution-band .disclose > summary{padding:10px 20px;font-size:14.5px}
+.caution-band .caution h2{font-size:20px;padding-bottom:14px}
+.caution-band .caution > p{font-size:15px}
+.caution-band .disclose .panel{margin-top:20px}
+.caution-band .disclose > summary{background:var(--caution-btn);color:#FFFFFF}
+.caution-band .disclose > summary:hover{
+  background:#2A3260;box-shadow:0 12px 26px -12px rgba(0,0,0,.55);
+}
+.caution-band .disclose > summary:focus-visible{outline-color:#fff}
+.caution-band .caution{background:transparent;border:0;padding:0;max-width:74ch;margin-inline:auto}
+.caution-band .caution h2{color:#fff;text-shadow:0 0 34px rgba(255,255,255,.38)}
+.caution-band .caution h2::after{background:rgba(255,255,255,.85)}
+.caution-band .caution > p{color:rgba(255,255,255,.82)}
+.caution-band .caution li{color:rgba(255,255,255,.90)}
+.caution-band .caution li::before{background:rgba(255,255,255,.72)}
+@media (prefers-reduced-motion:reduce){
+  .disclose .panel{animation:none}
+  .disclose > summary:hover{transform:none}
+  .disclose .chev{transition:none}
+}
+
+/* ============================================================
+   contraindications · the one tinted panel on the page
+   ============================================================ */
+.caution{background:var(--accent-tint);border:1px solid var(--line-2);padding:32px 34px}
+.caution h2{font-size:22px;margin-bottom:9px;font-family:var(--display)}
+.caution > p{font-size:15.5px;color:var(--ink-2);max-width:62ch;font-weight:300}
+.caution ul{
+  list-style:none;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px 30px;
+}
+.caution li{font-size:15px;color:var(--ink-2);padding-inline-start:16px;position:relative;line-height:1.5}
+.caution li::before{
+  content:"";position:absolute;inset-inline-start:0;top:.66em;
+  width:9px;height:1.5px;background:var(--accent);
+}
+
+/* ============================================================
+   contact
+   ============================================================ */
+.contact-band{background:var(--accent-tint);border-top-color:var(--line-2)}
+.contact-band .sec{padding-block:32px 44px}
+.contact{display:grid;grid-template-columns:.92fr 1.08fr;gap:40px;align-items:start}
+.contact h2{font-size:clamp(23px,2.6vw,31px);margin-bottom:12px}
+.contact .lede{color:var(--ink-2);font-weight:300;max-width:34ch;font-size:16.5px}
+.contact-card{
+  background:var(--surface);
+  border:1px solid var(--line-2);
+  border-top:3px solid var(--accent);
+  border-radius:3px;
+  padding:22px 22px 24px;
+}
+.reach{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:14px}
+.reach li{display:grid;grid-template-columns:78px 1fr;gap:14px;align-items:baseline;font-size:15.5px}
+.reach b{font-size:11.5px;letter-spacing:.12em;color:var(--muted);font-weight:500}
+.reach a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2);transition:color .18s ease,border-color .18s ease}
+.reach a:hover{color:var(--accent);border-color:var(--accent)}
+.reach .plain{color:var(--ink-2)}
+.reach .num{direction:ltr;display:inline-block;font-variant-numeric:tabular-nums}
+
+form{display:grid;gap:13px}
+.field{display:flex;flex-direction:column;gap:5px}
+.contact label{
+  font-size:12.5px;font-weight:600;letter-spacing:.06em;color:var(--accent);
+}
+input,select{
+  font-family:var(--body);font-size:16px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line-2);border-radius:2px;
+  padding:10px 13px;width:100%;transition:border-color .18s ease,box-shadow .18s ease;
+}
+input:hover,select:hover{border-color:var(--accent)}
+input:focus,select:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(82,96,171,.15);
+}
+input[aria-invalid="true"],select[aria-invalid="true"]{
+  border-color:var(--danger);
+  box-shadow:0 0 0 3px rgba(180,41,58,.13);
+}
+.err{
+  font-size:12.5px;font-weight:500;color:var(--danger);
+  margin:0;line-height:1.4;
+}
+.form-actions{display:flex;justify-content:center;margin-top:4px}
+.form-actions .btn{min-width:190px}
+.wa-inline{
+  margin-top:24px;padding-top:24px;border-top:1px solid var(--line);
+  display:flex;justify-content:center;
+}
+.wa-icon{width:18px;height:18px;flex:0 0 auto}
+
+/* floating whatsapp, appears once the hero is behind you */
+.wa-float{
+  position:fixed;inset-block-end:20px;inset-inline-end:20px;z-index:60;
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--wa);color:#fff;text-decoration:none;
+  font-family:var(--body);font-size:15px;font-weight:500;
+  padding:13px 20px;border-radius:999px;
+  box-shadow:0 10px 30px -10px rgba(0,0,0,.45);
+  opacity:0;visibility:hidden;transform:translateY(12px);
+  transition:opacity .25s ease,transform .25s ease,visibility .25s;
+}
+.wa-float.on{opacity:1;visibility:visible;transform:translateY(0)}
+.wa-float:hover{filter:brightness(1.07)}
+.wa-float svg{width:19px;height:19px;flex:0 0 auto}
+@media (prefers-reduced-motion:reduce){.wa-float{transition:opacity .2s ease,visibility .2s}
+  .wa-float,.wa-float.on{transform:none}}
+
+/* ============================================================
+   footer · thin
+   ============================================================ */
+.colophon{padding-block:18px;border-top:1px solid var(--line)}
+.colophon-row{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+.colophon img{height:30px;width:auto}
+.colophon p{font-size:13.5px;color:var(--muted)}
+.colophon a{color:var(--muted);text-decoration:none;transition:color .18s ease}
+.colophon a:hover{color:var(--accent)}
+.colophon .num{direction:ltr;display:inline-block;font-variant-numeric:tabular-nums}
+.colophon .sep{color:var(--line-2);margin-inline:2px}
+
+/* ============================================================
+   responsive
+   ============================================================ */
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:20px;padding-block:78px 34px;justify-items:center}
+  .hero-grid > div:first-child{justify-self:stretch}
+  .focal{order:-1}
+  .mech,.device,.contact{grid-template-columns:1fr;gap:34px}
+  .caution ul{grid-template-columns:1fr 1fr}
+  .device-shot{aspect-ratio:4/3}
+  .domain{padding:16px 14px}
+  .domain h3{font-size:19px}
+}
+@media (max-width:600px){
+  body{font-size:16.5px}
+  #focal-canvas{max-width:240px}
+  .sec{padding-block:32px 44px}
+  .sec-head{margin-bottom:26px}
+  .caution ul{grid-template-columns:1fr}
+  .caution{padding:24px 20px}
+  .brand img{height:34px}
+  .spec li{grid-template-columns:1fr;gap:3px}
+  .spec b{padding-top:0}
+  .reach li{grid-template-columns:1fr;gap:2px}
+  .wa-float{inset-block-end:14px;inset-inline-end:14px;padding:12px 17px;font-size:14px}
+
+  /* three columns still, just tighter */
+  .domain{padding:14px 8px}
+  .domain:first-child{padding-inline-start:0}
+  .domain:last-child{padding-inline-end:0}
+  .domain h3{font-size:16.5px;margin-bottom:2px}
+  .domain .scope{font-size:11px;margin-bottom:13px;line-height:1.35}
+  .domain ul{gap:9px}
+  .domain li{font-size:13px;line-height:1.35;padding-inline-start:11px}
+  .domain li::before{width:4px;height:4px;top:.5em}
+}
+</style>
+
+<script>document.documentElement.lang="he";document.documentElement.dir="rtl";</script>
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <a class="brand" href="#top" aria-label="גלנוס, מרכז לרפואת גלי הלם">
+      <img src="logo-dark.png" width="1000" height="478" alt="גלנוס GALENOS, מרכז לרפואת גלי הלם ESWT">
+    </a>
+    <nav class="masthead-actions" aria-label="פעולות ראשיות">
+      <a class="btn btn-line btn-sm" href="articles.html">מאמרים</a>
+      <a class="btn btn-solid btn-sm" href="#contact">יצירת קשר</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ========== hero ========== -->
+<section class="hero">
+  <div class="hero-media" aria-hidden="true">
+    <video id="hero-video" muted loop playsinline preload="none" poster="clinic-poster.jpg"></video>
+    <span class="hero-scrim"></span>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">מרכז לרפואת גלי הלם · ESWT</span>
+      <h1>גלי הלם ממוקדים לאורתופדיה, אורולוגיה וכאב כרוני</h1>
+      <p class="lede">
+        טיפול בגלי הלם הוא טכנולוגיה רפואית חדשנית המשתמשת בגלי אנרגיה אקוסטיים ממוקדים
+        לגירוי תהליכי ריפוי טבעיים בגוף. הטיפול לא פולשני, בטוח ויעיל במיוחד לבעיות כאב כרוני,
+        דלקות גידים ופציעות ספורט.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#contact">
+          לפרטים נוספים
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M10 3 5 8l5 5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="btn btn-line" href="#indications">במה מטפלים</a>
+      </div>
+    </div>
+
+    <figure class="focal">
+      <canvas id="focal-canvas" width="520" height="450"
+              role="img"
+              aria-label="איור: גלי הלם אקוסטיים מתכנסים אל נקודת מוקד אחת, שעומקה נע הלוך ושוב. לחיצה משגרת גל נוסף."></canvas>
+    </figure>
+  </div>
+</section>
+
+<!-- ========== domains ========== -->
+<div class="band band-surface" id="indications">
+  <section class="wrap sec">
+    <div class="sec-head">
+      <span class="eyebrow">תחומי הטיפול</span>
+      <h2>שלושה תחומים, פלטפורמה אחת</h2>
+    </div>
+    <div class="domains">
+
+      <article class="domain">
+        <h3>אורתופדיה</h3>
+        <p class="scope">גידים, הסתיידויות ופציעות עומס</p>
+        <ul>
+          <li>דורבן וכאב עקב</li>
+          <li>מרפק טניס וגולף</li>
+          <li>הסתיידות בכתף</li>
+          <li>כתף קפואה</li>
+          <li>גיד אכילס</li>
+          <li>ברך קופצן</li>
+        </ul>
+      </article>
+
+      <article class="domain">
+        <h3>אורולוגיה</h3>
+        <p class="scope">גל הלם בעוצמה נמוכה</p>
+        <ul>
+          <li>הפרעות זקפה</li>
+          <li>דלקת ערמונית כרונית</li>
+          <li>כאב אגני כרוני</li>
+          <li>מחלת פירוני</li>
+        </ul>
+      </article>
+
+      <article class="domain">
+        <h3>כאב כרוני</h3>
+        <p class="scope">כאב שריר־שלד מתמשך</p>
+        <ul>
+          <li>כאב מיופאסציאלי</li>
+          <li>פציעות עומס בספורט</li>
+          <li>כאב לאחר פציעה</li>
+          <li>כאב שלא הגיב לטיפול</li>
+        </ul>
+      </article>
+
+    </div>
+    <div class="sec-cta">
+      <a class="btn btn-solid" href="#contact">
+        לבדוק אם הטיפול מתאים
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M10 3 5 8l5 5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+</div>
+
+<!-- ========== mechanism ========== -->
+<div class="band photo-band">
+  <section class="wrap sec">
+    <div class="sec-head">
+      <span class="eyebrow">המנגנון</span>
+      <h2>מה גל ההלם עושה ברקמה</h2>
+    </div>
+    <div class="mech">
+      <div class="prose">
+        <p>
+          הגל חוצה את הרקמה הרכה ומשחרר את עיקר האנרגיה שלו בנקודה אחת, בעומק שנקבע מראש.
+          הגירוי המכני בנקודה הזו אינו הורס רקמה, הוא
+          <strong>מחזיר לפעולה תהליך ריפוי שנעצר</strong>.
+        </p>
+      </div>
+      <ul class="terms">
+        <li><dfn>Neo-angiogenesis</dfn><span>יצירת כלי דם חדשים והגברת אספקת הדם לרקמה</span></li>
+        <li><dfn>Mechanotransduction</dfn><span>תרגום הגירוי המכני לאותות תאיים וגיוס גורמי גדילה</span></li>
+        <li><dfn>Calcific breakdown</dfn><span>פירוק מוקדי הסתיידות, בעיקר בגיד הכתף ובפאשיה הפלנטרית</span></li>
+        <li><dfn>Analgesic effect</dfn><span>הפחתת הרגישות של קצות עצבים באזור והקלה בכאב</span></li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<!-- ========== device · text right, photo left ========== -->
+<div class="band band-surface" id="device">
+  <section class="wrap sec">
+    <div class="device">
+      <div>
+        <span class="eyebrow">הציוד</span>
+        <h2>Omnispec מבית Medispec</h2>
+        <details class="disclose">
+          <summary>מפרט המכשיר <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="panel">
+            <p>
+              מכשיר גלי הלם ממוקדים שמשרת את שלושת התחומים על אותה פלטפורמה, עם ראשי טיפול
+              נפרדים לכל תחום. הראש מוצמד לעור עם ג'ל מוליך, והמטופל ער לאורך כל המפגש.
+            </p>
+            <ul class="spec">
+              <li><b>יצרן</b><span>Medispec, יצרנית מערכות גלי הלם שנוסדה בתל אביב ופועלת היום בעשרות מדינות</span></li>
+              <li><b>סוג הגל</b><span>גל הלם ממוקד (Focused), להבדיל מגל רדיאלי שפועל בשכבות השטחיות</span></li>
+              <li><b>מיקוד</b><span>עיקר האנרגיה משתחררת בעומק שנקבע מראש, ולא לאורך כל המסלול</span></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <figure class="device-shot">
+        <video autoplay muted loop playsinline preload="metadata"
+               poster="omnispec.jpg"
+               aria-label="מכשיר Omnispec מבית Medispec בחדר הטיפולים של גלנוס">
+          <source src="device.mp4" type="video/mp4">
+          <img src="omnispec.jpg" alt="מכשיר Omnispec מבית Medispec בחדר הטיפולים של גלנוס">
+        </video>
+      </figure>
+    </div>
+  </section>
+</div>
+
+<!-- ========== contraindications ========== -->
+<div class="band caution-band">
+  <section class="wrap sec">
+    <details class="disclose caution-block">
+      <summary>מידע חשוב <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+      <div class="panel caution">
+        <h2>מתי הטיפול אינו מתאים</h2>
+        <p>הרשימה נבדקת לפני תחילת טיפול. אם אחד מהסעיפים רלוונטי, נשמח לדבר לפני הקביעה.</p>
+        <ul>
+          <li>הריון</li>
+          <li>הפרעות קרישה או טיפול נוגד קרישה פעיל</li>
+          <li>גידול או חשד לגידול באזור הטיפול</li>
+          <li>זיהום פעיל בעור או ברקמה שמתחתיו</li>
+          <li>לוחיות גדילה פתוחות באזור הטיפול</li>
+          <li>שתל אלקטרוני פעיל באזור הטיפול</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+</div>
+
+<!-- ========== contact ========== -->
+<div class="band contact-band" id="contact">
+  <section class="wrap sec">
+    <div class="contact">
+      <div>
+        <span class="eyebrow">יצירת קשר</span>
+        <h2>לפרטים נוספים</h2>
+        <p class="lede">השאירו פרטים ונחזור אליכם, או פנו אלינו ישירות בוואטסאפ.</p>
+      </div>
+
+      <div class="contact-card">
+        <form id="contact-form" novalidate>
+          <div class="field">
+            <label for="c-name">שם</label>
+            <input id="c-name" name="c-name" type="text" autocomplete="name"
+                   required aria-describedby="e-name">
+            <p class="err" id="e-name" hidden></p>
+          </div>
+          <div class="field">
+            <label for="c-tel">טלפון</label>
+            <input id="c-tel" name="c-tel" type="tel" inputmode="numeric"
+                   autocomplete="tel" maxlength="10" required aria-describedby="e-tel">
+            <p class="err" id="e-tel" hidden></p>
+          </div>
+          <div class="field">
+            <label for="c-issue">הבעיה</label>
+            <select id="c-issue" name="c-issue" required aria-describedby="e-issue">
+              <option value="">בחרו מהרשימה</option>
+              <option>דורבן או כאב עקב</option>
+              <option>מרפק טניס או גולף</option>
+              <option>הסתיידות בכתף</option>
+              <option>כתף קפואה</option>
+              <option>גיד אכילס או ברך</option>
+              <option>אורולוגיה</option>
+              <option>כאב כרוני</option>
+              <option>אחר</option>
+            </select>
+            <p class="err" id="e-issue" hidden></p>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-solid" type="submit">שליחה</button>
+          </div>
+        </form>
+
+        <!-- stands on its own: opens whatsapp with the greeting only, never the form fields -->
+        <div class="wa-inline">
+          <a class="btn btn-wa" href="https://wa.me/972505601900?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%90%D7%AA%D7%A8%20%D7%92%D7%9C%D7%A0%D7%95%D7%A1%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%97%D7%96%D7%A8%D7%95%20%D7%90%D7%9C%D7%99%D7%99" target="_blank" rel="noopener">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.19 3.7.59.26 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/></svg>
+            שלחו לנו הודעה
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap colophon-row">
+    <div>
+      <img class="on-light" src="logo-light.png" width="1000" height="478" alt="גלנוס">
+    </div>
+    <p>
+      גלנוס, מרכז לרפואת גלי הלם
+      <span class="sep">·</span> הגדוד העברי 5, אשדוד
+      <span class="sep">·</span> <a class="num" href="tel:+972505601900">050-5601900</a>
+    </p>
+  </div>
+</footer>
+
+<a class="wa-float" id="wa-float"
+   href="https://wa.me/972505601900?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%90%D7%AA%D7%A8%20%D7%92%D7%9C%D7%A0%D7%95%D7%A1%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%97%D7%96%D7%A8%D7%95%20%D7%90%D7%9C%D7%99%D7%99"
+   target="_blank" rel="noopener" aria-label="שליחת הודעת וואטסאפ לגלנוס">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.19 3.7.59.26 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/>
+  </svg>
+  שלחו לנו הודעה
+</a>
+
+<script>
+/* ---------- section headings sweep their rule in, once, when reached ---------- */
+(function () {
+  var heads = document.querySelectorAll('.sec-head h2,.device h2,.contact h2,.caution h2');
+  if (!heads.length || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('lit');   /* purely additive: the heading is visible either way */
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -12% 0px' });
+  heads.forEach(function (h) { io.observe(h); });
+})();
+
+/* ---------- hero video: loaded only where it earns its bandwidth ---------- */
+(function () {
+  var v = document.getElementById('hero-video');
+  if (!v) return;
+  var wide = window.matchMedia('(min-width: 761px)');
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!wide.matches || calm.matches) return;   /* poster frame carries the hero instead */
+  var src = document.createElement('source');
+  src.type = 'video/mp4';
+  src.src = 'clinic.mp4';
+  v.appendChild(src);
+  v.preload = 'auto';
+  v.load();
+  var go = v.play();
+  if (go && go.catch) go.catch(function () {});  /* autoplay blocked: the poster stands in */
+})();
+
+/* ---------- contact form -> whatsapp ---------- */
+var WHATSAPP = '972505601900';
+var GREETING = 'הגעתי מאתר גלנוס, אשמח שתחזרו אליי';
+
+var form  = document.getElementById('contact-form');
+var elName = document.getElementById('c-name');
+var elTel  = document.getElementById('c-tel');
+var elIssue = document.getElementById('c-issue');
+
+/* the phone box accepts digits and nothing else, as it is typed or pasted */
+elTel.addEventListener('input', function () {
+  var digits = this.value.replace(/\D+/g, '').slice(0, 10);
+  if (digits !== this.value) {
+    var atEnd = this.selectionStart === this.value.length;
+    this.value = digits;
+    if (atEnd) this.setSelectionRange(digits.length, digits.length);
+  }
+});
+
+function showError(el, slotId, message) {
+  var slot = document.getElementById(slotId);
+  el.setAttribute('aria-invalid', 'true');
+  slot.textContent = message;
+  slot.hidden = false;
+}
+function clearError(el, slotId) {
+  var slot = document.getElementById(slotId);
+  el.removeAttribute('aria-invalid');
+  slot.textContent = '';
+  slot.hidden = true;
+}
+[[elName, 'e-name'], [elTel, 'e-tel'], [elIssue, 'e-issue']].forEach(function (pair) {
+  var ev = pair[0].tagName === 'SELECT' ? 'change' : 'input';
+  pair[0].addEventListener(ev, function () { clearError(pair[0], pair[1]); });
+});
+
+function validate() {
+  var bad = [];
+
+  var name = elName.value.trim();
+  if (name.length < 2) { showError(elName, 'e-name', 'נא למלא שם'); bad.push(elName); }
+  else clearError(elName, 'e-name');
+
+  var tel = elTel.value.trim();
+  if (!tel) {
+    showError(elTel, 'e-tel', 'נא למלא מספר טלפון');
+    bad.push(elTel);
+  } else if (!/^0\d{8,9}$/.test(tel)) {
+    showError(elTel, 'e-tel', 'מספר טלפון לא תקין. 9 או 10 ספרות, מתחיל באפס');
+    bad.push(elTel);
+  } else clearError(elTel, 'e-tel');
+
+  if (!elIssue.value) { showError(elIssue, 'e-issue', 'נא לבחור את הבעיה'); bad.push(elIssue); }
+  else clearError(elIssue, 'e-issue');
+
+  return bad;
+}
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var bad = validate();
+  if (bad.length) { bad[0].focus(); return; }   /* nothing is sent until all three are filled */
+
+  var lines = [
+    GREETING,
+    'שם: ' + elName.value.trim(),
+    'טלפון: ' + elTel.value.trim(),
+    'הבעיה: ' + elIssue.value
+  ];
+  window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(lines.join('\n')),
+              '_blank', 'noopener');
+});
+
+/* ---------- floating whatsapp reveals past the hero ---------- */
+(function () {
+  var fab = document.getElementById('wa-float');
+  var contact = document.getElementById('contact');
+  if (!fab) return;
+
+  function sync() {
+    var show = window.pageYOffset > 190;
+    /* stand down once the contact block is on screen: it carries its own button */
+    if (show && contact && contact.getBoundingClientRect().top < window.innerHeight * 0.7) {
+      show = false;
+    }
+    fab.classList.toggle('on', show);
+  }
+  window.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
+})();
+
+/* ---------- focal point: wavefronts converging on an adjustable focus ---------- */
+(function () {
+  var cv = document.getElementById('focal-canvas');
+  if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d');
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var W = 0, H = 0, fx = 0, fxTarget = 0, fy = 0, rMax = 0;
+  var waves = [], flash = 0, last = 0, spawnClock = 0, driftClock = 0;
+  var SPREAD = 0.87;              /* half-angle of each wavefront, radians (50 deg) */
+  var SPAWN = 1050;               /* ms between wavefronts */
+  var NEAR = 0.160, FAR = 0.440;  /* focal depth travel, as a fraction of width */
+  var RMAX = 0.538;               /* widest wavefront, as a fraction of width */
+  var RING = 0.100, DOT = 0.035;  /* focus ring and dot, same */
+  var DRIFT = 6000;               /* ms for one full right-then-left sweep */
+  var ink = '#5260AB';
+
+  function readTheme() {
+    var cs = getComputedStyle(cv);
+    ink = cs.getPropertyValue('--focal-ink').trim() || ink;
+  }
+
+  function home() { return W * NEAR; }   /* starts left, so the first move is rightward */
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var r = cv.getBoundingClientRect();
+    if (!r.width) return;
+    W = r.width; H = r.height;
+    cv.width = Math.round(W * dpr);
+    cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    fy = H * 0.50;
+    /* box is sized to the drawing: the widest wavefront lands 4px inside the edge */
+    rMax = W * RMAX;
+    if (!fx) { fx = home(); fxTarget = fx; }
+  }
+
+  /* one wavefront: an arc centred exactly on the focal point, opening to the right */
+  function arc(r, alpha, width) {
+    if (r < 1) return;
+    ctx.beginPath();
+    ctx.arc(fx, fy, r, -SPREAD, SPREAD);
+    ctx.strokeStyle = ink;
+    ctx.globalAlpha = alpha;
+    ctx.lineWidth = width;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  }
+
+  function focusMark() {
+    ctx.globalAlpha = 0.3;
+    ctx.beginPath();
+    ctx.arc(fx, fy, W * RING + flash * 8, 0, Math.PI * 2);
+    ctx.strokeStyle = ink;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.globalAlpha = 1;
+    ctx.beginPath();
+    ctx.arc(fx, fy, W * DOT + flash * 4, 0, Math.PI * 2);
+    ctx.fillStyle = ink;
+    ctx.fill();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < waves.length; i++) {
+      var t = 1 - waves[i].r / rMax;             /* 0 at the rim, 1 at the focus */
+      arc(waves[i].r, 0.14 + 0.72 * t, 1.4 + 1.5 * t);
+    }
+    focusMark();
+    ctx.globalAlpha = 1;
+  }
+
+  function still() {
+    ctx.clearRect(0, 0, W, H);
+    var radii = [0.26, 0.45, 0.63, 0.80];
+    for (var i = 0; i < radii.length; i++) {
+      arc(rMax * radii[i], 0.80 - i * 0.19, 2.2 - i * 0.2);
+    }
+    focusMark();
+    ctx.globalAlpha = 1;
+  }
+
+  function frame(now) {
+    if (!last) last = now;
+    var dt = Math.min(now - last, 60);
+    last = now;
+
+    /* the focus sweeps between shallow and deep on its own, so the figure is never still */
+    driftClock += dt;
+    var d = 0.5 - 0.5 * Math.cos(driftClock / DRIFT * Math.PI * 2);
+    fxTarget = W * (NEAR + (FAR - NEAR) * d);
+    fx += (fxTarget - fx) * 0.11;
+
+    spawnClock += dt;
+    if (spawnClock >= SPAWN) { spawnClock -= SPAWN; waves.push({ r: rMax }); }
+
+    var speed = rMax / 2600;                      /* rim to focus in ~2.6s */
+    for (var i = waves.length - 1; i >= 0; i--) {
+      waves[i].r -= speed * dt;
+      if (waves[i].r <= 6) { waves.splice(i, 1); flash = 1; }
+    }
+    flash *= Math.pow(0.9, dt / 16.7);
+    if (flash < 0.01) flash = 0;
+
+    draw();
+    requestAnimationFrame(frame);
+  }
+
+  /* tap or click fires an extra burst straight away */
+  cv.addEventListener('pointerdown', function () {
+    if (reduce.matches) return;
+    waves.push({ r: rMax });
+    waves.push({ r: rMax * 0.70 });
+    flash = 1;
+  });
+
+  function start() {
+    readTheme();
+    resize();
+    fx = fxTarget = home();
+    driftClock = 0;
+    if (reduce.matches) { still(); return; }
+    waves = [{ r: rMax * 0.42 }, { r: rMax * 0.75 }];
+    spawnClock = SPAWN * 0.35;
+    last = 0;
+    draw();                       /* never blank: rAF is paused while the tab is hidden */
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', function () {
+    resize();
+    if (reduce.matches) still();
+  });
+  if (reduce.addEventListener) reduce.addEventListener('change', start);
+  start();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "גלנוס",
+  "alternateName": "Galenos",
+  "description": "מרכז לרפואת גלי הלם באורתופדיה, אורולוגיה וכאב כרוני.",
+  "url": "https://galenos.co.il/",
+  "logo": "https://galenos.co.il/logo-light.png",
+  "telephone": "+972-50-560-1900",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "הגדוד העברי 5",
+    "addressLocality": "אשדוד",
+    "addressCountry": "IL"
+  },
+  "medicalSpecialty": ["Orthopedic", "Urologic", "PainMedicine"]
+}
+</script>

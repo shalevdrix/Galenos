@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>מאמרים ומחקרים · גלנוס</title>
+
+<meta name="description" content="מאמרים ומחקרים על טיפול בגלי הלם באורתופדיה, אורולוגיה וכאב כרוני. סקירות שיטתיות ומטא־אנליזות, עם קישור למקור ב-PubMed.">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="logo-light.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;600&family=Heebo:wght@300;400;500;700&display=swap">
+
+<style>
+:root{
+  color-scheme:light only;
+  direction:rtl;
+
+  --paper:#FBFBFD;
+  --surface:#FFFFFF;
+  --ink:#0F1018;
+  --ink-2:#393B4E;
+  --muted:#6C6F86;
+  --line:#E2E3EC;
+  --line-2:#CBCEE2;
+  --accent:#5260AB;
+  --accent-deep:#41508F;
+  --accent-tint:#EEEFF8;
+  --btn-fg:#FFFFFF;
+
+  --display:"Frank Ruhl Libre","Times New Roman",serif;
+  --body:"Heebo","Segoe UI",Arial,sans-serif;
+
+  --wrap:1120px;
+  --gutter:22px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{
+  font-family:var(--display);font-weight:600;margin:0;
+  line-height:1.25;text-wrap:balance;letter-spacing:-.008em;
+}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+:where(a,button):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:1px}
+
+.eyebrow{
+  display:block;font-family:var(--body);
+  font-size:13.5px;font-weight:600;letter-spacing:.13em;
+  color:var(--accent);margin-bottom:12px;
+}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--body);font-size:14px;font-weight:500;
+  padding:8px 15px;border:1px solid transparent;border-radius:2px;
+  text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,
+             transform .18s ease,box-shadow .18s ease;
+}
+.btn-solid{background:var(--accent);color:var(--btn-fg)}
+.btn-solid:hover{background:var(--accent-deep);transform:translateY(-2px);
+  box-shadow:0 10px 22px -12px rgba(82,96,171,.4)}
+.btn-line{border-color:var(--line-2);color:var(--ink);background:transparent}
+.btn-line:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+
+/* ---------- header ---------- */
+.masthead{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.masthead-row{display:flex;align-items:center;gap:12px;padding-block:11px}
+.brand{display:block;line-height:0;flex-shrink:0}
+.brand img{height:36px;width:auto}
+.masthead .spacer{margin-inline-start:auto}
+
+/* ---------- intro ---------- */
+.intro{background:var(--surface);border-bottom:1px solid var(--line)}
+.intro-inner{padding-block:40px 38px;max-width:66ch}
+.intro h1{font-size:clamp(27px,3.4vw,38px);margin-bottom:14px}
+.intro p{color:var(--ink-2);font-weight:300;font-size:17px}
+.intro p + p{margin-top:12px}
+.jumps{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px}
+
+/* ---------- groups ---------- */
+.group{padding-block:40px 46px;border-top:1px solid var(--line)}
+.group:first-of-type{border-top:0}
+.group > .wrap > h2{
+  font-size:clamp(22px,2.6vw,29px);position:relative;
+  padding-bottom:15px;margin-bottom:8px;
+}
+.group > .wrap > h2::after{
+  content:"";position:absolute;inset-inline-start:0;bottom:0;
+  width:54px;height:3px;border-radius:2px;background:var(--accent);
+}
+.group-note{color:var(--muted);font-size:14.5px;margin-bottom:26px}
+
+.papers{list-style:none;margin:0;padding:0}
+.paper{padding:20px 0;border-bottom:1px solid var(--line)}
+.paper:first-child{border-top:1px solid var(--line)}
+.paper h3{
+  font-family:var(--body);font-size:16px;font-weight:500;line-height:1.45;
+  direction:ltr;text-align:left;margin-bottom:7px;
+}
+.paper h3 a{text-decoration:none;color:var(--ink);transition:color .18s ease}
+.paper h3 a:hover{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.cite{
+  direction:ltr;text-align:left;
+  font-size:13px;color:var(--muted);letter-spacing:.01em;
+  font-variant-numeric:tabular-nums;margin-bottom:9px;
+}
+.gist{font-size:15.5px;color:var(--ink-2);font-weight:300;line-height:1.55;max-width:74ch}
+.srcs{margin-top:9px;font-size:13px}
+.srcs a{
+  color:var(--accent);text-decoration:none;font-weight:500;
+  border-bottom:1px solid var(--line-2);transition:border-color .18s ease;
+}
+.srcs a:hover{border-color:var(--accent)}
+.srcs .dot{color:var(--line-2);margin-inline:7px}
+.tag{
+  display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.08em;
+  color:var(--accent);background:var(--accent-tint);
+  border:1px solid var(--line-2);border-radius:2px;
+  padding:2px 8px;margin-inline-start:8px;vertical-align:1px;
+}
+
+
+/* ---------- disclaimer strip ---------- */
+.disclaimer{
+  background:var(--accent-tint);
+  border-top:1px solid var(--line-2);
+  border-bottom:1px solid var(--line-2);
+}
+.disclaimer p{
+  padding-block:11px;
+  font-size:12.5px;line-height:1.5;
+  color:var(--ink-2);text-align:center;
+}
+
+/* ---------- footer ---------- */
+.colophon{padding-block:18px;border-top:1px solid var(--line)}
+.colophon-row{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+.colophon img{height:30px;width:auto}
+.colophon p{font-size:13.5px;color:var(--muted)}
+.colophon a{color:var(--muted);text-decoration:none}
+.colophon a:hover{color:var(--accent)}
+.colophon .num{direction:ltr;display:inline-block;font-variant-numeric:tabular-nums}
+.colophon .sep{color:var(--line-2);margin-inline:2px}
+
+@media (max-width:600px){
+  body{font-size:16.5px}
+  .brand img{height:31px}
+  .intro-inner{padding-block:30px 28px}
+  .group{padding-block:30px 34px}
+  .paper h3{font-size:15px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <a class="brand" href="index.html" aria-label="גלנוס, חזרה לדף הבית">
+      <img src="logo-light.png" width="1000" height="478" alt="גלנוס GALENOS, מרכז לרפואת גלי הלם ESWT">
+    </a>
+    <span class="spacer"></span>
+    <a class="btn btn-line" href="index.html">חזרה לאתר</a>
+    <a class="btn btn-solid" href="index.html#contact">יצירת קשר</a>
+  </div>
+</header>
+
+<main>
+
+<section class="intro">
+  <div class="wrap intro-inner">
+    <span class="eyebrow">מאמרים ומחקרים</span>
+    <h1>מה הספרות הרפואית אומרת על גלי הלם</h1>
+    <p>
+      חמישה מקורות בכל אחד משלושת התחומים שגלנוס עוסק בהם. רובם סקירות שיטתיות ומטא־אנליזות,
+      כלומר עבודות שמאגדות מחקרים אקראיים רבים ולא מחקר בודד.
+    </p>
+    <div class="jumps">
+      <a class="btn btn-solid" href="#ortho">אורתופדיה</a>
+      <a class="btn btn-solid" href="#uro">אורולוגיה</a>
+      <a class="btn btn-solid" href="#pain">כאב כרוני</a>
+    </div>
+  </div>
+</section>
+
+<section class="group" id="ortho">
+  <div class="wrap">
+    <h2>אורתופדיה</h2>
+    <p class="group-note">גידים, הסתיידויות, פאשיה פלנטרית וברך</p>
+    <ul class="papers">
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1186/s13018-026-06984-0" target="_blank" rel="noopener">Comparison of the efficacy of different types and intensities of extracorporeal shock wave therapy for lateral epicondylitis: a systematic review and network meta-analysis</a></h3>
+        <p class="cite">Jin R, et al. &middot; Journal of Orthopaedic Surgery and Research &middot; 2026</p>
+        <p class="gist">
+          מטא־אנליזת רשת שמשווה סוגי גל ועוצמות במרפק טניס. גל רדיאלי בעוצמה בינונית נתן את ההקלה הטובה ביותר בטווח הקצר, וגל ממוקד בעוצמה נמוכה בטווח הארוך.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1186/s13018-026-06984-0" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/42177532/" target="_blank" rel="noopener">PubMed 42177532</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1111/os.70175" target="_blank" rel="noopener">Efficacy of Conservative Approaches on Pain Relief and Function in Patients With Rotator Cuff Calcific Tendinopathy: Which Is the Best Option? A Systematic Review and Network Meta-Analysis</a><span class="tag">השוואת טיפולים</span></h3>
+        <p class="cite">Moggio L, et al. &middot; Orthopaedic Surgery &middot; 2025</p>
+        <p class="gist">
+          מטא־אנליזת רשת בהסתיידות בגיד הרוטטור קאף, המדרגת את הטיפולים השמרניים זה מול זה. גל הלם זוהה בין האסטרטגיות היעילות ביותר להפחתת כאב ולשיפור תפקוד.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1111/os.70175" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/41002287/" target="_blank" rel="noopener">PubMed 41002287</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.23736/S1973-9087.24.08136-X" target="_blank" rel="noopener">Efficacy and tolerability of extracorporeal shock wave therapy in patients with plantar fasciopathy: a systematic review with meta-analysis and meta-regression</a></h3>
+        <p class="cite">Lippi L, et al. &middot; European Journal of Physical and Rehabilitation Medicine &middot; 2024</p>
+        <p class="gist">
+          סקירה שיטתית ומטא־אנליזה בדלקת הפאשיה הפלנטרית, הרקע של דורבן וכאב עקב. מסקנת המחברים: הטיפול יעיל ונסבל היטב. בחירת הפרמטרים משפיעה על עוצמת ההקלה בכאב, ולכן מתאימים אותם למטופל.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.23736/S1973-9087.24.08136-X" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/39257331/" target="_blank" rel="noopener">PubMed 39257331</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1186/s12891-024-07445-7" target="_blank" rel="noopener">Effect of extracorporeal shockwave therapy for rotator cuff tendinopathy: a systematic review and meta-analysis</a></h3>
+        <p class="cite">Xue X, et al. &middot; BMC Musculoskeletal Disorders &middot; 2024</p>
+        <p class="gist">
+          מטא־אנליזה בטנדינופתיה של הרוטטור קאף. נמצא שיפור מובהק בכאב, בתפקוד הכתף ובשימור התפקוד לאורך זמן לעומת קבוצת ביקורת.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1186/s12891-024-07445-7" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/38704572/" target="_blank" rel="noopener">PubMed 38704572</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1016/j.jor.2024.02.021" target="_blank" rel="noopener">Extracorporeal shockwave therapy in the management of knee osteoarthritis: A systematic review of dose-response meta-analysis</a></h3>
+        <p class="cite">Chen TY, et al. &middot; Journal of Orthopaedics &middot; 2024</p>
+        <p class="gist">
+          מטא־אנליזת מינון-תגובה בדלקת מפרקים ניוונית של הברך. נמצא קשר ישיר בין עוצמת האנרגיה לתוצאה הקלינית: עוצמה גבוהה יותר הביאה לשיפור גדול יותר.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1016/j.jor.2024.02.021" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/38435314/" target="_blank" rel="noopener">PubMed 38435314</a>
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="group" id="uro">
+  <div class="wrap">
+    <h2>אורולוגיה</h2>
+    <p class="group-note">גל הלם בעוצמה נמוכה, Li-ESWT</p>
+    <ul class="papers">
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1093/sxmrev/qeag037" target="_blank" rel="noopener">Extracorporeal shock wave therapy in patients with chronic prostatitis/chronic pelvic pain syndrome and erectile dysfunction: a systematic review and meta-analysis</a></h3>
+        <p class="cite">Liu X, et al. &middot; Sexual Medicine Reviews &middot; 2026</p>
+        <p class="gist">
+          סקירה שיטתית ומטא־אנליזה של מחקרים אקראיים בגברים שסובלים גם מדלקת ערמונית כרונית או כאב אגני וגם מהפרעת זקפה. נמצא שיפור בתפקוד הזקפה ובתסמיני הכאב האגני, והשיפור בזקפה לווה בדרך כלל בשינוי חיובי גם בכאב, בתסמינים השתנתיים ובאיכות החיים.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1093/sxmrev/qeag037" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/42275556/" target="_blank" rel="noopener">PubMed 42275556</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1080/20565623.2025.2511438" target="_blank" rel="noopener">Efficacy of low-intensity extracorporeal shock wave therapy for erectile dysfunction: updated meta-analysis of randomized trials</a></h3>
+        <p class="cite">Fatima K, et al. &middot; Future Science OA &middot; 2025</p>
+        <p class="gist">
+          מטא־אנליזה מעודכנת של שנים־עשר מחקרים אקראיים, 882 גברים עם הפרעת זקפה על רקע וסקולרי. התוצאות תומכות בגל הלם בעוצמה נמוכה כאפשרות טיפול.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1080/20565623.2025.2511438" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/40497649/" target="_blank" rel="noopener">PubMed 40497649</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1002/nau.25524" target="_blank" rel="noopener">Extracorporeal shockwave therapy in treatment of chronic prostatitis/chronic pelvic pain syndrome: Systematic review and meta-analyses</a></h3>
+        <p class="cite">Labetov I, et al. &middot; Neurourology and Urodynamics &middot; 2024</p>
+        <p class="gist">
+          מטא־אנליזה בדלקת ערמונית כרונית ובתסמונת כאב אגני כרוני. מסקנת המחברים: אפשר להציע את הטיפול למטופלים, בזכות היותו לא פולשני, רמת הבטיחות הגבוהה והתוצאות הקליניות שעלו בניתוח.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1002/nau.25524" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/38847290/" target="_blank" rel="noopener">PubMed 38847290</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1038/s41443-019-0117-z" target="_blank" rel="noopener">Clinical studies on low intensity extracorporeal shockwave therapy for erectile dysfunction: a systematic review and meta-analysis of randomised controlled trials</a></h3>
+        <p class="cite">Sokolakis I, Hatzichristodoulou G &middot; International Journal of Impotence Research &middot; 2019</p>
+        <p class="gist">
+          מטא־אנליזה של עשרה מחקרים אקראיים מבוקרי דמה, 873 מטופלים. נמצא שיפור מובהק בתפקוד הזקפה בהפרעות על רקע וסקולרי, גם בדיווח המטופל עצמו וגם במדד אובייקטיבי של מהירות זרימת הדם.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1038/s41443-019-0117-z" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/30664671/" target="_blank" rel="noopener">PubMed 30664671</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1016/j.eururo.2009.03.043" target="_blank" rel="noopener">Extracorporeal shock wave therapy for the treatment of chronic pelvic pain syndrome in males: a randomised, double-blind, placebo-controlled study</a><span class="tag">ראשון מסוגו</span></h3>
+        <p class="cite">Zimmermann R, et al. &middot; European Urology &middot; 2009</p>
+        <p class="gist">
+          המחקר האקראי, כפול הסמיות ומבוקר הדמה הראשון בתסמונת כאב אגני כרוני בגברים. נמצאה השפעה מובהקת סטטיסטית לעומת דמה, ללא תופעות לוואי, ועם אפשרות לחזור על הטיפול בכל עת.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1016/j.eururo.2009.03.043" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/19372000/" target="_blank" rel="noopener">PubMed 19372000</a>
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="group" id="pain">
+  <div class="wrap">
+    <h2>כאב כרוני</h2>
+    <p class="group-note">כאב מיופאסציאלי, גב תחתון ורפואת ספורט</p>
+    <ul class="papers">
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1136/bjsports-2024-109082" target="_blank" rel="noopener">Recommendations for use of extracorporeal shockwave therapy in sports medicine: an international modified Delphi study</a><span class="tag">המלצות בינלאומיות</span></h3>
+        <p class="cite">Rhim HC, et al. &middot; British Journal of Sports Medicine &middot; 2025</p>
+        <p class="gist">
+          מסמך המלצות של פאנל בינלאומי בן 46 מחברים, שפורסם בכתב העת המוביל ברפואת ספורט. מגדיר מינוח אחיד, התוויות ושיקולי טיפול, ותומך בשימוש בגלי הלם.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1136/bjsports-2024-109082" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/40032293/" target="_blank" rel="noopener">PubMed 40032293</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1097/PHM.0000000000002286" target="_blank" rel="noopener">Efficacy of Extracorporeal Shockwave Therapy on Pain and Function in Myofascial Pain Syndrome: A Systematic Review and Meta-analysis of Randomized Clinical Trials</a></h3>
+        <p class="cite">Avendaño-López C, et al. &middot; American Journal of Physical Medicine &amp; Rehabilitation &middot; 2024</p>
+        <p class="gist">
+          מטא־אנליזה של מחקרים אקראיים בתסמונת כאב מיופאסציאלי. הטיפול נמצא יעיל בהקלה בכאב ובשיפור התפקוד, הן מול קבוצת ביקורת והן מול טיפול באולטרסאונד.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1097/PHM.0000000000002286" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/37205742/" target="_blank" rel="noopener">PubMed 37205742</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1186/s13018-023-03943-x" target="_blank" rel="noopener">Efficacy and safety of extracorporeal shockwave therapy in chronic low back pain: a systematic review and meta-analysis of 632 patients</a></h3>
+        <p class="cite">Liu K, et al. &middot; Journal of Orthopaedic Surgery and Research &middot; 2023</p>
+        <p class="gist">
+          מטא־אנליזה של 632 מטופלים עם כאב גב תחתון כרוני. נמצאה הקלה טובה יותר בכאב ושיפור בתפקוד המותני לעומת ההתערבויות שהושוו, ללא תופעות לוואי חמורות.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1186/s13018-023-03943-x" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/37355623/" target="_blank" rel="noopener">PubMed 37355623</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1097/PHM.0000000000001493" target="_blank" rel="noopener">The Effect of Extracorporeal Shock Wave Therapy on Pain Intensity and Neck Disability for Patients With Myofascial Pain Syndrome in the Neck and Shoulder: A Meta-Analysis of Randomized Controlled Trials</a></h3>
+        <p class="cite">Jun JH, et al. &middot; American Journal of Physical Medicine &amp; Rehabilitation &middot; 2021</p>
+        <p class="gist">
+          מטא־אנליזה של מחקרים אקראיים בכאב מיופאסציאלי בצוואר ובכתף. גל הלם נמצא עדיף על טיפולים אחרים בהפחתת עוצמת הכאב ובהעלאת סף הכאב בלחיצה, והגל הממוקד בפרט הראה שיפור מובהק בהקלה בכאב.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1097/PHM.0000000000001493" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/32520797/" target="_blank" rel="noopener">PubMed 32520797</a>
+        </p>
+      </li>
+      <li class="paper">
+        <h3><a href="https://doi.org/10.1097/PHM.0000000000001173" target="_blank" rel="noopener">Randomized Trial on Comparison of the Efficacy of Extracorporeal Shock Wave Therapy and Dry Needling in Myofascial Trigger Points</a></h3>
+        <p class="cite">Luan S, et al. &middot; American Journal of Physical Medicine &amp; Rehabilitation &middot; 2019</p>
+        <p class="gist">
+          מחקר אקראי שהשווה גל הלם לניקור יבש בנקודות הדק מיופאסציאליות. לאחר סדרה של שלושה טיפולים, גל הלם היה יעיל באותה מידה בהקלה בכאב ובשיפור התפקוד.
+        </p>
+        <p class="srcs">
+          <a href="https://doi.org/10.1097/PHM.0000000000001173" target="_blank" rel="noopener">המאמר באתר כתב העת</a>
+          <span class="dot">&middot;</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/31318748/" target="_blank" rel="noopener">PubMed 31318748</a>
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="disclaimer">
+  <div class="wrap">
+    <p>המידע בדף זה אינו תחליף לייעוץ רפואי, לבדיקה קלינית או להתוויה רפואית פרטנית.</p>
+  </div>
+</div>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap colophon-row">
+    <div><img src="logo-light.png" width="1000" height="478" alt="גלנוס"></div>
+    <p>
+      גלנוס, מרכז לרפואת גלי הלם
+      <span class="sep">&middot;</span> הגדוד העברי 5, אשדוד
+      <span class="sep">&middot;</span> <a class="num" href="tel:+972505601900">050-5601900</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
