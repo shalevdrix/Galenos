@@ -199,7 +199,7 @@ h1,h2,h3{
 }
 .hero-grid{
   display:grid;grid-template-columns:minmax(0,1fr) 265px;
-  gap:40px;align-items:center;padding-block:76px 44px;   /* clears the floating header */
+  gap:40px;align-items:center;padding-block:112px 48px;  /* the mark needs air above the eyebrow */
 }
 .hero h1{font-size:clamp(30px,4.1vw,47px);margin-bottom:20px}
 .hero .lede{font-size:17.5px;font-weight:300;max-width:48ch}
@@ -431,10 +431,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
 }
 .form-actions{display:flex;justify-content:center;margin-top:4px}
 .form-actions .btn{min-width:190px}
-.wa-inline{
-  margin-top:24px;padding-top:24px;border-top:1px solid var(--line);
-  display:flex;justify-content:center;
-}
+.wa-inline{margin-top:20px;display:flex;justify-content:flex-start}
 .wa-icon{width:18px;height:18px;flex:0 0 auto}
 
 /* floating whatsapp, appears once the hero is behind you */
@@ -469,6 +466,49 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
 /* ============================================================
    responsive
    ============================================================ */
+/* ============================================================
+   desktop only. every mobile rule below stays untouched.
+   ============================================================ */
+@media (min-width:961px){
+
+  /* the hero footage drops to where the machine actually is. on phones the same
+     element renders only its poster, so this stays out of the base rule. */
+  .hero-media video{object-position:52% 58%}
+
+  /* המנגנון: the terms list is the denser half, so give it the wider track.
+     its rows were airy enough to leave a lot of dead space, so they close up. */
+  .mech{grid-template-columns:.86fr 1.14fr;gap:56px}
+  .mech .prose p{font-size:19px;line-height:1.6}
+  .terms li{padding:9px 0;gap:2px}
+  .terms dfn{font-size:16.5px}
+  .terms span{font-size:15px;line-height:1.45}
+
+  /* הציוד: cropped from the top so the wall above the machine goes, and the frame
+     matches the column beside it, so an open spec panel ends on the photo's line */
+  .device{grid-template-columns:1.38fr .62fr;gap:52px;align-items:stretch}
+  .device-shot{aspect-ratio:auto;min-height:317px}
+  /* taken out of flow, so the grid row sets the frame height and not the video's
+     own 360x640, which would otherwise drive the frame to 563px */
+  .device-shot img,
+  .device-shot video{position:absolute;inset:0;object-position:50% 64%}
+  .device > div{display:flex;flex-direction:column;justify-content:center}
+  .device > div > p{font-size:17.5px}
+
+  /* the panel sits closer under its button, and the spec rows breathe less */
+  .device .disclose .panel{margin-top:14px;padding:18px 22px 4px}
+  .device .disclose .panel .spec{margin-top:14px}
+  .device .spec li{padding:9px 0}
+
+  /* יצירת קשר: name and phone share a row, the rest spans, and the box tightens */
+  #contact-form{grid-template-columns:1fr 1fr;column-gap:16px;row-gap:10px}
+  #contact-form > .field:nth-child(3),
+  #contact-form > .form-actions{grid-column:1 / -1}
+  .contact-card{padding:20px 22px 22px;align-self:start}
+  .contact .field{gap:4px}
+  .contact input,.contact select{padding:9px 13px}
+  .contact .form-actions{margin-top:2px}
+}
+
 @media (max-width:960px){
   .hero-grid{grid-template-columns:1fr;gap:20px;padding-block:78px 34px;justify-items:center}
   .hero-grid > div:first-child{justify-self:stretch}
@@ -660,9 +700,10 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
       </div>
 
       <figure class="device-shot">
-        <video autoplay muted loop playsinline preload="metadata"
+        <video id="device-video" muted loop playsinline preload="none"
                poster="omnispec.jpg"
                aria-label="מכשיר Omnispec מבית Medispec בחדר הטיפולים של גלנוס">
+          <source media="(min-width: 961px)" src="device-hd.mp4" type="video/mp4">
           <source src="device.mp4" type="video/mp4">
           <img src="omnispec.jpg" alt="מכשיר Omnispec מבית Medispec בחדר הטיפולים של גלנוס">
         </video>
@@ -696,10 +737,19 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
 <div class="band contact-band" id="contact">
   <section class="wrap sec">
     <div class="contact">
-      <div>
+      <div class="contact-intro">
         <span class="eyebrow">יצירת קשר</span>
         <h2>לפרטים נוספים</h2>
         <p class="lede">השאירו פרטים ונחזור אליכם, או פנו אלינו ישירות בוואטסאפ.</p>
+
+        <!-- stands on its own: opens whatsapp with the greeting only, never the form fields -->
+        <div class="wa-inline">
+          <a class="btn btn-wa" href="https://wa.me/972505601900?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%90%D7%AA%D7%A8%20%D7%92%D7%9C%D7%A0%D7%95%D7%A1%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%97%D7%96%D7%A8%D7%95%20%D7%90%D7%9C%D7%99%D7%99" target="_blank" rel="noopener">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.19 3.7.59.26 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/></svg>
+            שלחו לנו הודעה
+          </a>
+        </div>
+
       </div>
 
       <div class="contact-card">
@@ -736,13 +786,6 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
           </div>
         </form>
 
-        <!-- stands on its own: opens whatsapp with the greeting only, never the form fields -->
-        <div class="wa-inline">
-          <a class="btn btn-wa" href="https://wa.me/972505601900?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%90%D7%AA%D7%A8%20%D7%92%D7%9C%D7%A0%D7%95%D7%A1%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%97%D7%96%D7%A8%D7%95%20%D7%90%D7%9C%D7%99%D7%99" target="_blank" rel="noopener">
-            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.19 3.7.59.26 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/></svg>
-            שלחו לנו הודעה
-          </a>
-        </div>
       </div>
     </div>
   </section>
@@ -788,21 +831,51 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
   heads.forEach(function (h) { io.observe(h); });
 })();
 
-/* ---------- hero video: loaded only where it earns its bandwidth ---------- */
+/* ---------- video: nothing is fetched until the page has finished drawing ----------
+   the posters carry the first paint, so file size never delays what the visitor sees. */
 (function () {
-  var v = document.getElementById('hero-video');
-  if (!v) return;
-  var wide = window.matchMedia('(min-width: 761px)');
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (!wide.matches || calm.matches) return;   /* poster frame carries the hero instead */
-  var src = document.createElement('source');
-  src.type = 'video/mp4';
-  src.src = 'clinic.mp4';
-  v.appendChild(src);
-  v.preload = 'auto';
-  v.load();
-  var go = v.play();
-  if (go && go.catch) go.catch(function () {});  /* autoplay blocked: the poster stands in */
+
+  function afterPaint(fn) {
+    var run = function () {
+      if (window.requestIdleCallback) requestIdleCallback(fn, { timeout: 2000 });
+      else setTimeout(fn, 400);
+    };
+    if (document.readyState === 'complete') run();
+    else window.addEventListener('load', run, { once: true });
+  }
+
+  function start(v) {
+    v.preload = 'auto';
+    v.load();
+    var go = v.play();
+    if (go && go.catch) go.catch(function () {});   /* blocked: the poster stands in */
+  }
+
+  /* hero: desktop only, and only once everything else has settled */
+  afterPaint(function () {
+    var v = document.getElementById('hero-video');
+    if (!v || calm.matches) return;
+    if (!window.matchMedia('(min-width: 761px)').matches) return;
+    var src = document.createElement('source');
+    src.type = 'video/mp4';
+    src.src = 'clinic.mp4';
+    v.appendChild(src);
+    start(v);
+  });
+
+  /* device: waits until the visitor actually scrolls near it */
+  afterPaint(function () {
+    var v = document.getElementById('device-video');
+    if (!v || calm.matches) return;
+    if (!('IntersectionObserver' in window)) { start(v); return; }
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      start(v);
+    }, { rootMargin: '400px 0px' });
+    io.observe(v);
+  });
 })();
 
 /* ---------- contact form -> whatsapp ---------- */
