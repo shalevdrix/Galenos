@@ -207,7 +207,7 @@ h1,h2,h3{
 
 /* the hero commits to one dark treatment. these come AFTER the layout rules above,
    otherwise .hero .lede's token colour wins on equal specificity and the text vanishes. */
-.hero .eyebrow{color:#B7C0EC}
+.hero .eyebrow{color:#B7C0EC;font-size:clamp(20px,2.1vw,23px);letter-spacing:.07em;margin-bottom:18px}
 .hero h1{
   color:#FFFFFF;
   text-shadow:0 0 46px rgba(134,148,232,.60), 0 2px 20px rgba(0,0,0,.55);
@@ -229,7 +229,7 @@ h1,h2,h3{
 }
 
 /* a band with a room photo washed into it, text stays on top */
-.photo-band{position:relative;isolation:isolate}
+.photo-band{position:relative;isolation:isolate;background:var(--accent-tint)}
 .photo-band::before{
   content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
   background-image:url(mechanism-bg.jpg);
@@ -245,7 +245,7 @@ h1,h2,h3{
 .sec-head h2{font-size:clamp(24px,2.8vw,33px)}
 
 .mech{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
-.mech .prose p{color:var(--ink-2);font-weight:300;font-size:17.5px}
+.mech .prose p{color:var(--ink-2);font-weight:400;font-size:17.5px}
 .mech .prose strong{color:var(--ink);font-weight:500}
 .terms{list-style:none;margin:0;padding:0}
 .terms li{display:grid;gap:4px;padding:14px 0;border-bottom:1px solid var(--line)}
@@ -267,7 +267,18 @@ h1,h2,h3{
 .domain:last-child{border-inline-end:0}
 .domain:hover{background:var(--accent-tint)}
 .domain h3{font-size:21px;margin-bottom:3px}
-.domain .scope{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.4}
+.domain .scope{font-size:15px;color:var(--ink-2);margin-bottom:16px;line-height:1.45}
+.domain .scope b{font-weight:600;color:var(--ink)}
+
+/* each domain hides its own list behind a compact button */
+.domain-list{margin-top:2px}
+.domain-list > summary{padding:8px 14px;font-size:13.5px;gap:7px}
+.domain-list > summary .chev{width:12px;height:12px}
+.domain-list .panel{margin-top:14px}
+.domain li i{
+  display:block;font-style:normal;direction:ltr;text-align:right;
+  font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.4;
+}
 .domain ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
 .domain li{
   font-size:15.5px;color:var(--ink);line-height:1.4;
@@ -277,7 +288,51 @@ h1,h2,h3{
   content:"";position:absolute;inset-inline-start:0;top:.52em;
   width:6px;height:6px;border-radius:50%;background:var(--accent);
 }
-.sec-cta{margin-top:32px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+/* the section's own call to action: same family as the dropdown pills above it,
+   but two shades deeper and a size up, so it never reads as a fourth of them */
+.domains-cta{margin-top:36px;display:flex;justify-content:center}
+.domains-cta .btn{
+  background:transparent;color:var(--caution-btn);
+  border-color:var(--line-2);
+  padding:9px 22px;font-size:14.5px;font-weight:500;
+}
+.domains-cta .btn:hover{
+  border-color:var(--accent);color:var(--accent);
+  background:var(--accent-tint);transform:translateY(-1px);
+}
+@media (prefers-reduced-motion:reduce){.domains-cta .btn:hover{transform:none}}
+
+/* ============================================================
+   the process here
+   ============================================================ */
+.process-lede{
+  font-size:17.5px;font-weight:300;color:var(--ink-2);
+  max-width:74ch;margin-bottom:30px;
+}
+.stages,.roles{list-style:none;margin:0;padding:0}
+.stages li,.roles li{padding:15px 0;border-bottom:1px solid var(--line)}
+.stages li:first-child,.roles li:first-child{border-top:1px solid var(--line)}
+.stages li h4,.roles li h4{
+  font-family:var(--body);font-size:16.5px;font-weight:600;
+  color:var(--ink);margin:0 0 5px;line-height:1.4;
+}
+.stages li p,.roles li p{
+  font-size:15.5px;color:var(--ink-2);font-weight:300;
+  line-height:1.55;max-width:82ch;
+}
+.stages{counter-reset:stage}
+.stages li{counter-increment:stage;padding-inline-start:40px;position:relative}
+.stages li::before{
+  content:counter(stage,decimal-leading-zero);
+  position:absolute;inset-inline-start:0;top:17px;
+  font-family:var(--display);font-size:14px;font-weight:600;
+  color:var(--accent);letter-spacing:.08em;
+}
+.roles li{padding-inline-start:16px;position:relative}
+.roles li::before{
+  content:"";position:absolute;inset-inline-start:0;top:1.55em;
+  width:7px;height:7px;border-radius:50%;background:var(--accent);
+}
 
 /* ============================================================
    device
@@ -327,6 +382,7 @@ h1,h2,h3{
 .disclose > summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .disclose .chev{width:14px;height:14px;flex:0 0 auto;transition:transform .25s ease}
 .disclose[open] > summary .chev{transform:rotate(180deg)}
+.disclose-wide[open] > summary .chev{transform:none}  /* the badge rule drives it */
 .disclose .panel{margin-top:24px}
 .device .disclose .panel{
   background:var(--accent-tint);
@@ -340,6 +396,59 @@ h1,h2,h3{
 .disclose[open] > .panel{animation:reveal .26s ease}
 /* slide only, never opacity: a stalled animation must not hide readable text */
 @keyframes reveal{from{transform:translateY(-7px)}to{transform:none}}
+/* a full-width disclosure whose summary reads as a section heading, not a pill */
+.disclose-wide{margin-top:26px}
+.disclose-wide > summary{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  background:var(--accent-tint);
+  color:var(--ink);
+  border:1px solid var(--line-2);
+  border-inline-start:3px solid var(--accent);
+  border-radius:3px;
+  padding:15px 20px;
+  font-family:var(--display);font-size:19px;font-weight:600;
+  letter-spacing:-.005em;
+}
+.disclose-wide > summary:hover{
+  background:#E4E7F6;
+  border-color:var(--line-2);
+  border-inline-start-color:var(--accent-deep);
+  transform:translateY(-2px);
+  box-shadow:0 12px 26px -16px rgba(82,96,171,.8);
+}
+.disclose-wide > summary:active{transform:translateY(0)}
+.disclose-wide .sum-text{flex:1 1 auto;min-width:0}
+.disclose-wide .sum-side{display:flex;align-items:center;gap:13px;flex:0 0 auto}
+.disclose-wide .hint{
+  font-family:var(--body);font-size:12.5px;font-weight:600;
+  letter-spacing:.07em;color:var(--accent);
+  opacity:.75;transition:opacity .18s ease;
+}
+.disclose-wide .hint::before{content:"לפתיחה"}
+.disclose-wide[open] .hint::before{content:"לסגירה"}
+.disclose-wide > summary:hover .hint{opacity:1}
+.disclose-wide .badge{
+  width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;flex:0 0 auto;
+  background:var(--surface);border:1px solid var(--line-2);
+  transition:background .2s ease,border-color .2s ease;
+}
+.disclose-wide .badge .chev{
+  width:15px;height:15px;color:var(--accent);
+  transition:transform .28s cubic-bezier(.3,.9,.4,1),color .2s ease;
+}
+.disclose-wide > summary:hover .badge,
+.disclose-wide[open] > summary .badge{background:var(--accent);border-color:var(--accent)}
+.disclose-wide > summary:hover .badge .chev,
+.disclose-wide[open] > summary .badge .chev{color:#fff}
+.disclose-wide[open] > summary .badge .chev{transform:rotate(180deg)}
+@media (prefers-reduced-motion:reduce){
+  .disclose-wide > summary:hover{transform:none;box-shadow:none}
+  .disclose-wide .badge .chev{transition:color .2s ease}
+}
+.disclose-wide .panel{margin-top:18px}
+.disclose-wide + .disclose-wide{margin-top:16px}
+
 .caution-block{text-align:center}
 .caution-block .panel{text-align:right}
 
@@ -541,6 +650,13 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
   .domain ul{gap:9px}
   .domain li{font-size:13px;line-height:1.35;padding-inline-start:11px}
   .domain li::before{width:4px;height:4px;top:.5em}
+  .domain li i{font-size:10.5px;line-height:1.3}
+  .domain .scope{font-size:12px;margin-bottom:12px}
+  .domain-list > summary{padding:6px 8px;font-size:11.5px;gap:5px}
+  .domain-list > summary .chev{width:10px;height:10px}
+  .stages li{padding-inline-start:32px}
+  .disclose-wide > summary{font-size:16.5px;padding:13px 16px;gap:10px}
+  .disclose-wide > summary .chev{width:15px;height:15px}
 }
 </style>
 </head>
@@ -570,15 +686,14 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">מרכז לרפואת גלי הלם · ESWT</span>
-      <h1>גלי הלם ממוקדים לאורתופדיה, אורולוגיה וכאב כרוני</h1>
+      <h1>גלי הלם (ESWT) לאורתופדיה, אורולוגיה וכאב כרוני</h1>
       <p class="lede">
-        טיפול בגלי הלם הוא טכנולוגיה רפואית חדשנית המשתמשת בגלי אנרגיה אקוסטיים ממוקדים
-        לגירוי תהליכי ריפוי טבעיים בגוף. הטיפול לא פולשני, בטוח ויעיל במיוחד לבעיות כאב כרוני,
-        דלקות גידים ופציעות ספורט.
+        רפואה רגנרטיבית היחידה שמוכחת קלינית כחלופה להתערבות כירורגית. טיפול לא פולשני,
+        בטוח ויעיל. מוכר על ידי חברות הביטוח, אגף השיקום ומשרד הביטחון.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-solid" href="#contact">
-          לפרטים נוספים
+        <a class="btn btn-solid" href="#process">
+          התהליך אצלנו
           <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
             <path d="M10 3 5 8l5 5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -606,43 +721,62 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
 
       <article class="domain">
         <h3>אורתופדיה</h3>
-        <p class="scope">גידים, הסתיידויות ופציעות עומס</p>
-        <ul>
-          <li>דורבן וכאב עקב</li>
-          <li>מרפק טניס וגולף</li>
-          <li>הסתיידות בכתף</li>
-          <li>כתף קפואה</li>
-          <li>גיד אכילס</li>
-          <li>ברך קופצן</li>
-        </ul>
+        <p class="scope">אורתופדיה ו<b>פציעות ספורט</b></p>
+        <details class="disclose domain-list">
+          <summary>לרשימת ההתוויות <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="panel">
+            <ul>
+              <li>דורבן וכאב עקב <i>Plantar fasciitis</i></li>
+              <li>מרפק טניס <i>Tennis elbow</i></li>
+              <li>מרפק גולף <i>Golf elbow</i></li>
+              <li>כתף קפואה <i>Frozen shoulder</i></li>
+              <li>ברך קופצן <i>knee runner's</i></li>
+              <li>גיד אכילס <i>Achilles tendinopathy</i></li>
+              <li>הסתיידות בכתף <i>Calcific tendinitis</i></li>
+              <li>פציעות ספורט <i>Sports injuries</i></li>
+              <li>דלקות בגידים <i>Tendinopathy</i></li>
+              <li>גידים בכתף <i>Rotator cuff tendons</i></li>
+            </ul>
+          </div>
+        </details>
       </article>
 
       <article class="domain">
         <h3>אורולוגיה</h3>
         <p class="scope">גל הלם בעוצמה נמוכה</p>
-        <ul>
-          <li>הפרעות זקפה</li>
-          <li>דלקת ערמונית כרונית</li>
-          <li>כאב אגני כרוני</li>
-          <li>מחלת פירוני</li>
-        </ul>
+        <details class="disclose domain-list">
+          <summary>לרשימת ההתוויות <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="panel">
+            <ul>
+              <li>הפרעות זקפה <i>Erectile Dysfunction (ED / PE)</i></li>
+              <li>דלקת ערמונית כרונית <i>Chronic Prostatitis</i></li>
+              <li>כאב אגני כרוני <i>Chronic Pelvic Pain Syndrome (CP/CPPS)</i></li>
+              <li>מחלת פירוני <i>Peyronie's Disease</i></li>
+            </ul>
+          </div>
+        </details>
       </article>
 
       <article class="domain">
         <h3>כאב כרוני</h3>
         <p class="scope">כאב שריר־שלד מתמשך</p>
-        <ul>
-          <li>כאב מיופאסציאלי</li>
-          <li>פציעות עומס בספורט</li>
-          <li>כאב לאחר פציעה</li>
-          <li>כאב שלא הגיב לטיפול</li>
-        </ul>
+        <details class="disclose domain-list">
+          <summary>לרשימת ההתוויות <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="panel">
+            <ul>
+              <li>כאב מיופאסציאלי <i>Myofascial pain</i></li>
+              <li>פציעות עומס בספורט <i>Overuse injuries</i></li>
+              <li>כאב לאחר פציעה <i>Post-traumatic pain</i></li>
+              <li>כאב שלא הגיב לטיפול <i>Refractory pain</i></li>
+            </ul>
+          </div>
+        </details>
       </article>
 
     </div>
-    <div class="sec-cta">
-      <a class="btn btn-solid" href="#contact">
-        לבדוק אם הטיפול מתאים
+    <div class="domains-cta">
+      <a class="btn" href="#contact">
+        לפרטים נוספים
         <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
           <path d="M10 3 5 8l5 5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -656,7 +790,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
   <section class="wrap sec">
     <div class="sec-head">
       <span class="eyebrow">המנגנון</span>
-      <h2>מה גל ההלם עושה ברקמה</h2>
+      <h2>מה טכנולוגיית גלי הלם עושה ברקמה</h2>
     </div>
     <div class="mech">
       <div class="prose">
@@ -681,7 +815,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
   <section class="wrap sec">
     <div class="device">
       <div>
-        <span class="eyebrow">הציוד</span>
+        <span class="eyebrow">המכשור</span>
         <h2>Omnispec מבית Medispec</h2>
         <details class="disclose">
           <summary>מפרט המכשיר <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
@@ -694,6 +828,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
               <li><b>יצרן</b><span>Medispec, יצרנית מערכות גלי הלם שנוסדה בתל אביב ופועלת היום בעשרות מדינות</span></li>
               <li><b>סוג הגל</b><span>גל הלם ממוקד (Focused), להבדיל מגל רדיאלי שפועל בשכבות השטחיות</span></li>
               <li><b>מיקוד</b><span>עיקר האנרגיה משתחררת בעומק שנקבע מראש, ולא לאורך כל המסלול</span></li>
+              <li><b>הצוות</b><span>רופא משפחה, מטפלת מינית מוסמכת, מטפל ברפואה סינית המתמחה בכאב ופציעות ספורט, אח סיעודי מוסמך, טכנאית גלי הלם מוסמכת, מטפלת ייחודית לנשים, ומנהלת אדמיניסטרטיבית וסושיאל</span></li>
             </ul>
           </div>
         </details>
@@ -712,14 +847,75 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
   </section>
 </div>
 
+<!-- ========== the process here ========== -->
+<div class="band" id="process">
+  <section class="wrap sec">
+    <div class="sec-head">
+      <span class="eyebrow">התהליך אצלנו</span>
+      <h2>גישה מערכתית ביו־פסיכו־סוציאלית</h2>
+    </div>
+
+    <p class="process-lede">
+      הקליניקה דוגלת בגישה מערכתית ביו־פסיכו־סוציאלית, הרואה באדם שלם ומחברת בין הבריאות
+      הפיזית, הנפשית והקשר הזוגי והסביבתי. כל מטופל ומטופלת זוכים למעטפת מקצועית רב־תחומית
+      המותאמת אישית לצרכיהם, תוך דיאלוג מתמיד ושמירה על רצף טיפולי מול מערכת הבריאות
+      הציבורית ורופאי הקהילה בקופות החולים.
+    </p>
+
+    <details class="disclose disclose-wide">
+      <summary><span class="sum-text">שלבי הקבלה, ההערכה והרצף הטיפולי</span><span class="sum-side"><span class="hint" aria-hidden="true"></span><span class="badge"><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></summary>
+      <div class="panel">
+    <ol class="stages">
+      <li>
+        <h4>מיון רפואי והתוויית פרוטוקול</h4>
+        <p>כל מטופלי הקליניקה עוברים הערכה קלינית מקיפה וקביעת פרוטוקול טיפולי אישי על ידי רופא המשפחה של הקליניקה.</p>
+      </li>
+      <li>
+        <h4>קשר ישיר וסנכרון עם רופאי הקהילה</h4>
+        <p>הקליניקה פועלת בשיתוף פעולה רציף עם הרופאים המטפלים בקופות החולים. במידת הצורך, המטופל מופנה להמשך בירור ובדיקות עזר משלימות במסגרת הקופה, כדי להבטיח אבחון מדויק ובטיחות רפואית מקסימלית.</p>
+      </li>
+      <li>
+        <h4>יישום טיפולי רב־תחומי</h4>
+        <p>התוכנית מיושמת בפועל על ידי אנשי המקצוע הייעודיים בהתאם למטרות הטיפול.</p>
+      </li>
+    </ol>
+      </div>
+    </details>
+
+    <details class="disclose disclose-wide">
+      <summary><span class="sum-text">צוות הקליניקה והמענה המקצועי</span><span class="sum-side"><span class="hint" aria-hidden="true"></span><span class="badge"><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></summary>
+      <div class="panel">
+    <ul class="roles">
+      <li>
+        <h4>רופא משפחה</h4>
+        <p>אחראי על המיון הקליני הראשוני, קביעת הפרוטוקול הטיפולי, הערכת התוויות נגד וסנכרון רפואי מול רופאי הקהילה והקופות.</p>
+      </li>
+      <li>
+        <h4>מטפלת מינית מוסמכת (איט״ם), מטפלת זוגית ומשפחתית, ופסיכותרפיסטית מוסמכת בטראומה</h4>
+        <p>מעניקה ליווי, ייעוץ ומעקב קליני בתחומי התפקוד המיני, המערכת הזוגית והרווחה הנפשית, לצד עיבוד וטיפול ממוקד במצבי טראומה והשפעתם על הגוף והיחסים.</p>
+      </li>
+      <li>
+        <h4>מטפל מוסמך ברפואה סינית ופציעות ספורט</h4>
+        <p>בעל ותק וניסיון של שנים רבות במרפאות כאב מובילות של קופות החולים. אמון על הטיפול בכאב כרוני ואקוטי, שיקום תנועתי ופציעות ספורט באמצעות פרוטוקולים מתקדמים.</p>
+      </li>
+      <li>
+        <h4>אח מוסמך</h4>
+        <p>אחראי על ביצוע הטיפולים האורולוגיים והפרוצדורות הקליניות בקליניקה, תחת הפרוטוקול שנקבע ובליווי ובקרה מקצועית לפי הצורך.</p>
+      </li>
+    </ul>
+      </div>
+    </details>
+  </section>
+</div>
+
 <!-- ========== contraindications ========== -->
 <div class="band caution-band">
   <section class="wrap sec">
     <details class="disclose caution-block">
       <summary>מידע חשוב <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
       <div class="panel caution">
-        <h2>מתי הטיפול אינו מתאים</h2>
-        <p>הרשימה נבדקת לפני תחילת טיפול. אם אחד מהסעיפים רלוונטי, נשמח לדבר לפני הקביעה.</p>
+        <h2>מתי הטיפול אינו מתאים · Contraindication</h2>
+        <p>הכל בהתאם להתייעצות רפואית.</p>
         <ul>
           <li>הריון</li>
           <li>הפרעות קרישה או טיפול נוגד קרישה פעיל</li>
@@ -802,6 +998,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
       גלנוס, מרכז לרפואת גלי הלם
       <span class="sep">·</span> הגדוד העברי 5, אשדוד
       <span class="sep">·</span> <a class="num" href="tel:+972505601900">050-5601900</a>
+      <span class="sep">·</span> <a href="privacy.html">מדיניות פרטיות</a>
     </p>
   </div>
 </footer>

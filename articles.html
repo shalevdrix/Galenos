@@ -110,6 +110,37 @@ h1,h2,h3{
 }
 .group-note{color:var(--muted);font-size:14.5px;margin-bottom:26px}
 
+/* long-form pieces */
+.features{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.feature-link{
+  display:block;text-decoration:none;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-inline-start:3px solid var(--accent);
+  border-radius:3px;padding:22px 24px;
+  transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+.feature-link:hover{
+  border-color:var(--line-2);border-inline-start-color:var(--accent-deep);
+  transform:translateY(-2px);box-shadow:0 12px 26px -16px rgba(82,96,171,.8);
+}
+.feature-kicker{
+  display:block;font-size:12px;font-weight:600;letter-spacing:.12em;
+  color:var(--accent);margin-bottom:8px;
+}
+.feature-link h3{font-size:24px;margin-bottom:9px;color:var(--ink)}
+.feature-link p{font-size:15.5px;color:var(--ink-2);font-weight:300;line-height:1.55;max-width:74ch}
+.feature-go{
+  display:inline-flex;align-items:center;gap:7px;margin-top:14px;
+  font-size:14px;font-weight:600;color:var(--accent);
+}
+.feature-go svg{width:14px;height:14px;transition:transform .22s cubic-bezier(.3,.9,.4,1)}
+.feature-link:hover .feature-go svg{transform:translateX(4px)}
+@media (prefers-reduced-motion:reduce){
+  .feature-link:hover{transform:none;box-shadow:none}
+  .feature-link:hover .feature-go svg{transform:none}
+}
+
 .papers{list-style:none;margin:0;padding:0}
 .paper{padding:20px 0;border-bottom:1px solid var(--line)}
 .paper:first-child{border-top:1px solid var(--line)}
@@ -196,10 +227,52 @@ h1,h2,h3{
       כלומר עבודות שמאגדות מחקרים אקראיים רבים ולא מחקר בודד.
     </p>
     <div class="jumps">
+      <a class="btn btn-solid" href="#features">מאמרים מורחבים</a>
       <a class="btn btn-solid" href="#ortho">אורתופדיה</a>
       <a class="btn btn-solid" href="#uro">אורולוגיה</a>
       <a class="btn btn-solid" href="#pain">כאב כרוני</a>
     </div>
+  </div>
+</section>
+
+<section class="group" id="features">
+  <div class="wrap">
+    <h2>מאמרים מורחבים</h2>
+    <ul class="features">
+
+      <li class="feature">
+        <a class="feature-link" href="article-sexuality-pain.html">
+          <span class="feature-kicker">כאב כרוני · בריאות מינית</span>
+          <h3>חיים מלאים בצל הכאב</h3>
+          <p>
+            כאב כרוני משנה את הגוף, את מצב הרוח ואת הזוגיות, ולעיתים קרובות גם את חיי המין.
+            סקירה על הגורמים הנפשיים, הפיזיים והתרופתיים, ועל מה שאפשר לעשות.
+          </p>
+          <span class="feature-go">לקריאת המאמר
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M10 3 5 8l5 5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+
+      <li class="feature">
+        <a class="feature-link" href="article-eswt-ed.html">
+          <span class="feature-kicker">אורולוגיה · בריאות הגבר</span>
+          <h3>גלי הלם לטיפול בבעיות זקפה</h3>
+          <p>
+            טיפול שלא מפצה על הבעיה אלא מכוון לשפר את זרימת הדם עצמה. מה הנתונים מראים
+            לפי חומרת הבעיה, כמה זמן התוצאות מחזיקות, ולמי זה מתאים.
+          </p>
+          <span class="feature-go">לקריאת המאמר
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M10 3 5 8l5 5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+
+    </ul>
   </div>
 </section>
 

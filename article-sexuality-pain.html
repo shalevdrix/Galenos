@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>חיים מלאים בצל הכאב · גלנוס</title>
+
+<meta name="description" content="כאב כרוני משנה את הגוף, את מצב הרוח ואת הזוגיות, ולעיתים קרובות גם את חיי המין. סקירה על הגורמים הנפשיים, הפיזיים והתרופתיים ועל מה שאפשר לעשות.">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="logo-light.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;600&family=Heebo:wght@300;400;500;700&display=swap">
+
+<style>
+:root{
+  color-scheme:light only;
+  direction:rtl;
+  --paper:#FBFBFD; --surface:#FFFFFF;
+  --ink:#0F1018; --ink-2:#393B4E; --muted:#6C6F86;
+  --line:#E2E3EC; --line-2:#CBCEE2;
+  --accent:#5260AB; --accent-deep:#41508F; --accent-tint:#EEEFF8;
+  --btn-fg:#FFFFFF;
+  --display:"Frank Ruhl Libre","Times New Roman",serif;
+  --body:"Heebo","Segoe UI",Arial,sans-serif;
+  --wrap:1120px; --gutter:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{
+  font-family:var(--display);font-weight:600;margin:0;
+  line-height:1.25;text-wrap:balance;letter-spacing:-.008em;
+}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+:where(a,button):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:1px}
+
+.eyebrow{
+  display:block;font-family:var(--body);
+  font-size:13.5px;font-weight:600;letter-spacing:.13em;
+  color:var(--accent);margin-bottom:12px;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--body);font-size:14px;font-weight:500;
+  padding:8px 15px;border:1px solid transparent;border-radius:2px;
+  text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+}
+.btn-solid{background:var(--accent);color:var(--btn-fg)}
+.btn-solid:hover{background:var(--accent-deep);transform:translateY(-2px)}
+.btn-line{border-color:var(--line-2);color:var(--ink);background:transparent}
+.btn-line:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+
+/* ---------- header ---------- */
+.masthead{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.masthead-row{display:flex;align-items:center;gap:12px;padding-block:11px}
+.brand{display:block;line-height:0;flex-shrink:0}
+.brand img{height:36px;width:auto}
+.masthead .spacer{margin-inline-start:auto}
+
+/* ---------- article ---------- */
+.lede-band{background:var(--surface);border-bottom:1px solid var(--line)}
+.lede-inner{padding-block:40px 36px;max-width:68ch}
+.lede-inner h1{font-size:clamp(29px,3.8vw,44px);margin-bottom:16px}
+.standfirst{font-size:18.5px;font-weight:300;color:var(--ink-2)}
+
+.article{padding-block:38px 50px;max-width:74ch}
+.article h2{
+  font-size:clamp(22px,2.5vw,28px);
+  position:relative;padding-bottom:14px;margin:42px 0 18px;
+}
+.article h2::after{
+  content:"";position:absolute;inset-inline-start:0;bottom:0;
+  width:50px;height:3px;border-radius:2px;background:var(--accent);
+}
+.article h2:first-child{margin-top:0}
+.article h3{font-family:var(--body);font-size:17.5px;font-weight:600;margin:26px 0 8px}
+.article p{color:var(--ink-2);font-weight:300}
+.article p + p{margin-top:14px}
+.article strong{font-weight:600;color:var(--ink)}
+.cite-note{font-size:14px;color:var(--muted)}
+
+/* the one figure that carries a number */
+.figure-stat{
+  display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+  background:var(--accent-tint);
+  border:1px solid var(--line-2);border-top:3px solid var(--accent);
+  border-radius:3px;padding:22px 24px;margin:26px 0;
+}
+.figure-stat .num{
+  font-family:var(--display);font-size:52px;font-weight:600;
+  color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;
+}
+.figure-stat .say{flex:1 1 20ch;min-width:0}
+.figure-stat .say b{display:block;font-size:16px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.figure-stat .say span{font-size:15px;color:var(--ink-2);font-weight:300;line-height:1.5}
+
+/* two terms set against each other */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
+.pair > div{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:3px;padding:18px 20px;
+}
+.pair h4{
+  font-family:var(--body);font-size:16px;font-weight:600;
+  color:var(--accent);margin:0 0 6px;
+}
+.pair p{font-size:15.5px;color:var(--ink-2);font-weight:300;line-height:1.55}
+
+/* plain hairline lists */
+.facts{list-style:none;margin:20px 0 0;padding:0}
+.facts li{padding:15px 0;border-bottom:1px solid var(--line)}
+.facts li:first-child{border-top:1px solid var(--line)}
+.facts li h4{
+  font-family:var(--body);font-size:16.5px;font-weight:600;
+  color:var(--ink);margin:0 0 4px;line-height:1.4;
+}
+.facts li p{font-size:15.5px;color:var(--ink-2);font-weight:300;line-height:1.55}
+
+/* what can be done */
+.moves{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:14px}
+.moves li{
+  background:var(--surface);border:1px solid var(--line);
+  border-inline-start:3px solid var(--accent);
+  border-radius:3px;padding:18px 20px;
+}
+.moves .tag{
+  display:block;font-size:11.5px;font-weight:600;letter-spacing:.1em;
+  color:var(--accent);margin-bottom:6px;
+}
+.moves h4{font-family:var(--body);font-size:16.5px;font-weight:600;margin:0 0 5px}
+.moves p{font-size:15.5px;color:var(--ink-2);font-weight:300;line-height:1.55}
+
+.note{
+  background:var(--accent-tint);border:1px solid var(--line-2);
+  border-radius:3px;padding:18px 20px;margin:28px 0 0;
+}
+.note p{font-size:15.5px;color:var(--ink-2)}
+.note b{font-weight:600;color:var(--ink)}
+
+/* sources */
+.sources{background:var(--surface);border-top:1px solid var(--line)}
+.sources-inner{padding-block:36px 44px;max-width:80ch}
+.sources h2{font-size:22px;margin-bottom:6px}
+.sources h3{font-family:var(--body);font-size:14px;font-weight:600;letter-spacing:.06em;color:var(--muted);margin:24px 0 10px}
+.sources ol{margin:0;padding-inline-start:0;list-style:none;counter-reset:src}
+.sources li{
+  counter-increment:src;position:relative;
+  padding:9px 0 9px 0;padding-inline-start:30px;
+  border-bottom:1px solid var(--line);
+  font-size:14px;color:var(--ink-2);line-height:1.5;
+  direction:ltr;text-align:left;
+}
+.sources li::before{
+  content:counter(src) ".";position:absolute;inset-inline-start:0;top:9px;
+  color:var(--accent);font-variant-numeric:tabular-nums;font-weight:500;
+}
+.sources li a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line-2)}
+.sources li a:hover{border-color:var(--accent)}
+.sources .he{direction:rtl;text-align:right}
+
+.disclaimer{background:var(--accent-tint);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.disclaimer p{padding-block:11px;font-size:12.5px;line-height:1.5;color:var(--ink-2);text-align:center}
+
+/* footer */
+.colophon{padding-block:18px;border-top:1px solid var(--line)}
+.colophon-row{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+.colophon img{height:30px;width:auto}
+.colophon p{font-size:13.5px;color:var(--muted)}
+.colophon a{color:var(--muted);text-decoration:none}
+.colophon a:hover{color:var(--accent)}
+.colophon .num{direction:ltr;display:inline-block;font-variant-numeric:tabular-nums}
+.colophon .sep{color:var(--line-2);margin-inline:2px}
+
+@media (max-width:700px){
+  .pair{grid-template-columns:1fr}
+  .figure-stat .num{font-size:44px}
+}
+@media (max-width:600px){
+  body{font-size:16.5px}
+  /* three buttons plus the logo only just fit a phone, so the header
+     tightens instead of squeezing the logo off the edge. */
+  .brand img{height:27px}
+  .masthead-row{gap:7px}
+  .masthead .btn{padding:7px 8px;font-size:13px}
+}
+@media (max-width:390px){
+  /* narrowest phones: pull in the header's own gutter so the row stays even
+     on both sides instead of the last button sliding into the margin. */
+  .masthead .wrap{padding-inline:14px}
+  .lede-inner{padding-block:30px 26px}
+  .article{padding-block:28px 38px}
+  .article h2{margin:32px 0 16px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <a class="brand" href="index.html" aria-label="גלנוס, חזרה לדף הבית">
+      <img src="logo-light.png" width="1000" height="478" alt="גלנוס GALENOS, מרכז לרפואת גלי הלם ESWT">
+    </a>
+    <span class="spacer"></span>
+    <a class="btn btn-line" href="index.html">חזרה לאתר</a>
+    <a class="btn btn-line" href="articles.html">כל המאמרים</a>
+    <a class="btn btn-solid" href="index.html#contact">יצירת קשר</a>
+  </div>
+</header>
+
+<main>
+
+<section class="lede-band">
+  <div class="wrap lede-inner">
+    <span class="eyebrow">כאב כרוני · בריאות מינית</span>
+    <h1>חיים מלאים בצל הכאב</h1>
+    <p class="standfirst">
+      כאב כרוני משנה את הגוף, את מצב הרוח ואת הזוגיות, ולעיתים קרובות גם את חיי המין.
+      זהו אחד ההיבטים המדוברים פחות בטיפול בכאב, ואחד המשפיעים ביותר על איכות החיים.
+    </p>
+  </div>
+</section>
+
+<article class="wrap article">
+
+  <h2>למה בכלל מדברים על מיניות בטיפול בכאב</h2>
+  <p>
+    כאב ומחלה כרוניים פוגעים באיכות חייו של האדם הסובל וגם בסביבתו הקרובה. הפגיעה ניכרת
+    בעיקר בתחום הגופני והמיני.
+  </p>
+  <p>
+    כאב, בין אם כרוני ובין אם חריף, מהווה חסם ממשי לסיפוק צרכים אנושיים בסיסיים. מנגד,
+    איכות חיים גופנית ונפשית היא בדיוק מקור הכוחות הנפשיים והמוטיבציה שנדרשים כדי להתמודד
+    עם הכאב עצמו. זהו מעגל שפועל לשני הכיוונים.
+  </p>
+  <p>
+    לפי הגדרת ארגון הבריאות העולמי (2015), בריאות מינית היא מצב של רווחה גופנית, נפשית
+    וחברתית בהקשר של מיניות. היא מחברת בין ההיבטים הגופניים, הרגשיים, האינטלקטואליים,
+    החברתיים והזוגיים של ההוויה המינית, ולא רק בין איברים ותפקודים.
+  </p>
+
+  <div class="figure-stat">
+    <span class="num">73%</span>
+    <span class="say">
+      <b>שיעור הפגיעה בתפקוד המיני</b>
+      <span>מחקרים מצביעים על כך שהשכיחות של קשיים בתפקוד המיני בקרב מתמודדים עם כאב כרוני מגיעה עד 73% (Ambler et al., 2001).</span>
+    </span>
+  </div>
+
+  <p>
+    ולמרות זאת, הנושא נוטה לעבור מתחת לרדאר, ללא טיפול וללא שיח. הסיבות מוכרות: קושי של
+    המטופל לחשוף מידע שנתפס כאינטימי ואישי, לצד היעדר הכשרה מספקת של אנשי מקצוע רפואיים
+    בתחום המיניות (McInnes, 2003).
+  </p>
+
+  <h2>שני מושגים שחשוב להפריד ביניהם</h2>
+  <p>
+    כדי להבין את השפעת המיניות על איכות החיים, חשוב להבחין בין רווחה מינית לבין תפקוד מיני
+    (Verschuren et al., 2010). הם אינם אותו דבר, והם לא בהכרח נפגעים יחד.
+  </p>
+  <div class="pair">
+    <div>
+      <h4>רווחה מינית</h4>
+      <p>ההיבט הפסיכולוגי של המיניות: היכולת לחבר רגשות חיוביים למיניות, ליהנות ממנה ולחוש בה שייכות וקרבה.</p>
+    </div>
+    <div>
+      <h4>תפקוד מיני</h4>
+      <p>היכולת הביולוגית של הגוף להגיב לתשוקה ולעוררות: זקפה ושפיכה אצל גברים, סיכה נרתיקית, כיווץ שרירי האגן ואורגזמה אצל נשים.</p>
+    </div>
+  </div>
+  <p>
+    מיניות נחשבת לגורם חיוני התורם לאיכות החיים (Laumann et al., 2005), ולאיכות הפעילות
+    המינית יש השפעה רחבה מעבר לחדר השינה: על מערכות יחסים מספקות, על תמיכה חברתית, על
+    תחושת ביטחון ועל דימוי הגוף (Kwan et al., 2005).
+  </p>
+
+  <h2>הגורמים הנפשיים</h2>
+  <p>
+    מטופלים עם כאב כרוני מדווחים לעיתים קרובות על חסמים פסיכולוגיים: קושי בעוררות מינית,
+    ירידה בביטחון העצמי המיני, פחד מכאב, ובעיות במערכות יחסים אינטימיות (Ambler et al., 2001).
+  </p>
+  <p>
+    <strong>ממצא מרכזי בספרות: גורמים פסיכולוגיים וחברתיים פוגעים בתפקוד המיני אף יותר
+    מהמשתנים הביו־רפואיים</strong> (Turk &amp; Okifuji, 2002).
+  </p>
+  <p>
+    במקרים רבים מצטרפות לכאב הכרוני הפרעות נפשיות נלוות, בעיקר הפרעות מצב רוח: דיכאון,
+    חרדה, פוסט־טראומה והפרעות בדימוי הגוף. אלה אינם משפיעים רק על התפקוד הפיזי; הם פוגעים
+    בתשוקה, בעוררות וביכולת להגיע לאורגזמה, וכן ברווחה האישית והמינית הכוללת
+    (Laurent &amp; Simons, 2009).
+  </p>
+
+  <h3>דימוי הגוף</h3>
+  <p>
+    מצבי כאב כרוני משנים את האופן שבו אדם תופס את גופו, ולעיתים יוצרים תפיסה שלילית או
+    מעוותת. ציוני ההערכה העצמית של מטופלים הסובלים מכאב נמוכים משמעותית מאלה של אנשים
+    ללא כאב כרוני (Elton et al., 1978), וממצאים דומים נמצאו בקרב נשים עם פיברומיאלגיה
+    (Akkaya et al., 2012) ובקרב מטופלים עם דלקת מפרקים שגרונית ומחלות ראומטיות אחרות
+    (Boyington et al., 2008; Shapiro et al., 2005).
+  </p>
+  <p>
+    לכך יש השלכה ישירה: נשים ששלמות יותר עם גופן מדווחות על שיעור גבוה יותר של פעילות
+    מינית, הנאה ואורגזמה, יוזמה, פתיחות לחוויות חדשות וחיבור חזק יותר לבן או בת הזוג,
+    בהשוואה לנשים שאינן מרוצות מדימוי גופן (Ackard et al., 2000).
+  </p>
+  <p>
+    מעניין לציין שמדובר לא רק בתפיסה סובייקטיבית. אקאיה ועמיתיה (2012) מצאו שינויים
+    נוירולוגיים ופיזיולוגיים במוחם של מטופלים עם כאב כרוני, שפגעו ביכולתם לתפוס את גופם
+    במדויק. הפרעות בתפיסת תצורת הגוף נמצאו קשורות לדיכאון, שכיח מאוד לצד כאב כרוני, וכך
+    המעגל נסגר.
+  </p>
+
+  <h3>חשש מכאב והימנעות</h3>
+  <p>
+    אדם שחווה כאב מתנועה מסוימת ילמד באופן טבעי לפחד ממנה ולהימנע ממנה
+    (Vlaeyen &amp; Linton, 2000). כשהכאב נקשר ליחסי מין, מתפתחת הימנעות מפעילות מינית מחשש
+    שתנוחה או תנועה יחמירו את הכאב או יגרמו לפציעה (Schlesinger, 1996).
+  </p>
+  <p>
+    ההימנעות הזו אינה ניטרלית. בדיוק כפי שהימנעות מתמדת מפעילות גופנית פוגעת במערכות
+    השריר, השלד והלב, כך נוצרת תסמונת אי־שימוש. לאורך זמן, יחד עם דיכאון, נבנית ציפייה
+    לכאב וחרדה סביב היכולת התפקודית, שמעצימות את ההימנעות. ההימנעות עצמה מגבירה את
+    הדיכאון, בשל הנסיגה מפעילויות שתמכו קודם במצב הרוח
+    (Vlaeyen &amp; Linton, 2000; Payne et al., 2005).
+  </p>
+  <div class="note">
+    <p>
+      <b>חשוב לדעת:</b>
+      גם כשמצב הכאב חולף, ההשפעות של החשש וההימנעות עשויות להישאר. זו אחת הסיבות שטיפול
+      בכאב לבדו אינו תמיד מחזיר את חיי המין לקדמותם.
+    </p>
+  </div>
+
+  <h2>כאב כרוני והיסטוריה של פגיעה מינית</h2>
+  <p>
+    הקשר בין טראומה מינית לכאב כרוני נחקר רבות. חלק ניכר מהמטופלים הסובלים ממצבי כאב כרוני
+    חוו בעברם צורה כלשהי של פגיעה מינית (Walling et al., 1994; Linton, 1997; Wurtele et al., 1990).
+  </p>
+  <p>
+    הפגיעה עלולה להוביל למגוון תוצאות גופניות ונפשיות אצל גברים ונשים כאחד (Coker et al., 2002).
+    למרות שרוב המחקר בוצע על נשים, יש לציין שהתוצאות אצל גברים דומות מבחינת עוצמת ההשלכות
+    על כאב כרוני ועל יחסים מיניים בהמשך החיים, אלא שגברים מדווחים על הפגיעה הרבה פחות,
+    בשל בושה ותפיסות של גבריות.
+  </p>
+  <p>
+    מטופלים משני המינים עם היסטוריה של פגיעה מינית מדווחים על תפקוד פסיכולוגי וחברתי ירוד
+    יותר בבגרות, וכן על יותר תסמינים גופניים, ובכללם מתח שרירי כרוני (Wurtele et al., 1990).
+    פציעה, פחד ומתח עשויים לתרום להתפתחות בעיות בריאות כרוניות: כאבי ראש, כאבי גב, כאב
+    באזור המפשעה וכאב בזמן יחסי מין (Campbell, 2002).
+  </p>
+  <p>
+    הפגיעה נקשרה גם להפרעת כאב באגן ובחדירה (GPPPD), שהייתה ידועה בעבר כהפרעת כאב מיני,
+    מונח המתייחס למגוון תסמינים הגורמים לכאב באיברי המין או פוגמים באיכות יחסי המין
+    (Meana et al., 2015; Rosenbaum, 2010). הפרעות אלו קיימות אצל גברים ונשים כאחד, אך
+    מדווחות בשכיחות גבוהה יותר אצל נשים.
+  </p>
+
+  <h2>הגורמים הפיזיים</h2>
+  <ul class="facts">
+    <li>
+      <h4>קושי למצוא תנוחה נוחה</h4>
+      <p>אחת הבעיות הנפוצות ביותר. תנוחות מקובלות עלולות להפעיל לחץ על נקודה כואבת ולהפוך את המגע עצמו לגורם מעורר כאב (Ambler et al., 2001; Bahouq et al., 2013).</p>
+    </li>
+    <li>
+      <h4>טווח תנועה מוגבל ועייפות</h4>
+      <p>חולשה, הגבלה בתנועה או כאב בתנועה מצמצמים את מרחב הביטוי המיני. עייפות ממושכת מהכאב עשויה פשוט להותיר את המטופל ללא כוח פיזי (Fleming &amp; Paice, 2001; Sjögren &amp; Fugl-Meyer, 1981).</p>
+    </li>
+    <li>
+      <h4>שינויים בתחושה</h4>
+      <p>קהות או קושי להבחין בין חוויות חושיות בגירוי אזורים כואבים, מה שמשפיע ישירות על העוררות (Paice, 2003; Monga et al., 1999).</p>
+    </li>
+    <li>
+      <h4>פגיעה בעוררות ובאורגזמה</h4>
+      <p>כאב כרוני עלול לפגוע ביכולת להשיג זקפה או בהפרשת נוזל הסיכוך, ובחלק מהמקרים למנוע הגעה לאורגזמה (Sparkman-Johnson, 2003).</p>
+    </li>
+    <li>
+      <h4>כאב באזור איברי המין והאגן</h4>
+      <p>מחלות באזור והליכי הטיפול בהן, הקרנות לאזור האגן, ניתוחי מעי גס או צוואר הרחם, טיפול בהגדלת ערמונית, עשויים לשנות את זרימת הדם לאזור, לפגוע בעצבים ולהפוך יחסי מין לכואבים (Paice, 2003).</p>
+    </li>
+    <li>
+      <h4>כאב שאינו באזור המיני כלל</h4>
+      <p>פגיעה בעמוד השדרה התחתון עלולה לערב עצבים המווסתים עוררות ותפקוד. מחלות נלוות כמו סוכרת או מחלת לב פוגעות בזרימת הדם וגורמות לקשיים מיניים בפני עצמן (Paice, 2003).</p>
+    </li>
+  </ul>
+
+  <h2>הגורמים התרופתיים</h2>
+  <p>
+    זהו אחד ההיבטים החשובים ביותר, ואחד המדוברים פחות: חלק מהתרופות שנועדו להקל על הכאב
+    עלולות בעצמן לפגוע בתפקוד המיני (Santos et al., 2015). שלוש משפחות בולטות במיוחד.
+  </p>
+  <ul class="facts">
+    <li>
+      <h4>אופיואידים</h4>
+      <p>משככי כאבים אופיואידיים נקשרו ישירות להיפוגונדיזם, ירידה בתפקוד בלוטות המין, לחוסר איזון בין אסטרוגן לטסטוסטרון ולרמות מופחתות של הורמוני מין אצל גברים ונשים כאחד (Deyo et al., 2015). שימוש ממושך נקשר לירידה בחשק, לקשיים בזקפה ובשפיכה, לוגיניזמוס, לאנאורגזמה ולפגיעה בפוריות (Gulliford, 1998). התרופות עלולות גם להעלות את רמות הפרולקטין, מה שמשבש בהמשך את מערך הורמוני המין (Rhodin et al., 2010).</p>
+    </li>
+    <li>
+      <h4>תרופות הרגעה</h4>
+      <p>תרופות אלו חוסמות דופמין, מוליך עצבי הקשור לתגובות רגשיות ולמרכזי ההנאה במוח, ובכך פוגעות בתפקוד המיני (Cutler, 2003; Wirshing et al., 2002). בדומה לאופיואידים, גם הן מעלות פרולקטין ומקשות על הגעה לאורגזמה (Maguire, 2002), וחסימת אצטילכולין מפחיתה טסטוסטרון ומורידה תשוקה (Ichikawa et al., 2002).</p>
+    </li>
+    <li>
+      <h4>נוגדי דיכאון</h4>
+      <p>רוב נוגדי הדיכאון משנים את רמות הסרוטונין באזורים שונים במוח. העלאת סרוטונין לבדה עלולה לפגוע בתפקוד הזקפה, בסיכה, בשפיכה ובאורגזמה (Frohlich &amp; Meston, 2000).</p>
+    </li>
+  </ul>
+  <div class="note">
+    <p>
+      <b>בכל שלוש המשפחות, לרוב אפשר לשפר את המצב:</b>
+      שינוי מינון, החלפת תרופה, או הוספת טיפול ייעודי. אין לשנות טיפול תרופתי על דעת עצמכם.
+      זו שיחה שצריכה להתקיים עם הרופא המטפל, וכדאי מאוד ליזום אותה.
+    </p>
+  </div>
+
+  <h2>מה אפשר לעשות</h2>
+  <p>
+    הבנת ההשפעה של הכאב הכרוני ושל הטיפול בו היא תנאי למתן מענה יעיל
+    (Conaglen &amp; Conaglen, 2013). נקודת המוצא פשוטה: מישהו צריך לפתוח את השיחה. מטופלים
+    רבים מדווחים שמעולם לא נערך איתם דיון בנושא, למרות שהתלוננו על קשיים מיניים וציפו
+    למידע ולייעוץ (Bahouq et al., 2013).
+  </p>
+  <ul class="moves">
+    <li>
+      <span class="tag">התאמה מעשית</span>
+      <h4>עבודה על תנוחות ועל נוחות</h4>
+      <p>מכשול מרכזי הוא עלייה בכאב במהלך יחסי מין והקושי למצוא תנוחה נוחה. בשיח לא שיפוטי אפשר לבחון חלופות שיפחיתו את העומס על האזור הכואב.</p>
+    </li>
+    <li>
+      <span class="tag">גוף</span>
+      <h4>פיזיותרפיה ממוקדת</h4>
+      <p>תרגילים, מתיחות וטכניקות עיסוי להקלה על הכאב. מכיוון שתנועה ופעילות גופנית לבדן מקלות על תסמיני חרדה ודיכאון (Asmundson &amp; Katz, 2009), התועלת חורגת מהכאב עצמו.</p>
+    </li>
+    <li>
+      <span class="tag">זוגיות</span>
+      <h4>טיפול מיני וזוגי</h4>
+      <p>מחקרי מעקב ארוכי טווח מראים שטיפול מיני מסייע לזוגות לפתח מיומנויות התמודדות חדשות ומשפר את איכות הקשר עצמו (Hawton et al., 1986), ולכן יש לו פוטנציאל כטיפול משלים בניהול כאב כרוני.</p>
+    </li>
+    <li>
+      <span class="tag">נפש</span>
+      <h4>טיפול קוגניטיבי־התנהגותי (CBT)</h4>
+      <p>בשלושת העשורים האחרונים CBT הפך לטיפול הפסיכו־סוציאלי המוביל בכאב כרוני, ובשנים האחרונות משמש גם בהפרעות מיניות: הפעלה התנהגותית, אסטרטגיות חשיפה, פתרון בעיות ומיומנויות ויסות.</p>
+    </li>
+    <li>
+      <span class="tag">מודעות</span>
+      <h4>התערבויות מבוססות מיינדפולנס</h4>
+      <p>מודעות תכליתית ולא שיפוטית לחוויה הנוכחית (Kabat-Zinn, 2005). יתרון מעשי: בניגוד לתרגילי מיקוד חושי שדורשים בן או בת זוג, מיומנויות קשב זמינות גם למי שאינו יכול לקיים יחסי מין בשל פציעה או כאב (Hocaloski et al., 2016).</p>
+    </li>
+  </ul>
+
+  <h2>הכיוון הטיפולי</h2>
+  <p>
+    המחקר מצביע על מעגל שפועל לשני הכיוונים. טיפול בכאב הכרוני יכול לשפר את החשק ואת
+    התפקוד המיני (Kwan et al., 2005), וטיפול בתפקוד המיני עצמו, באמצעות טיפול
+    פסיכו־סקסואלי, תיקון תפיסות מיניות שגויות, אימון הרפיה ועבודה על קשיים בין־אישיים,
+    עשוי להפחית בעקיפין את עוצמת תסמיני הכאב (Arabkheradmand et al., 2008).
+  </p>
+  <p>
+    נכון להיום אין פרוטוקול טיפולי אחד וספציפי למיניות בקרב מטופלים עם כאב כרוני. ההמלצה
+    המקובלת היא הערכה רחבה, הכוללת את הכאב, את התפקוד המיני, ואת ההיבטים הזוגיים
+    והפסיכולוגיים, וגישה טיפולית שמתייחסת לכולם יחד ולא לכל אחד בנפרד (Kwan et al., 2005).
+  </p>
+
+</article>
+
+<section class="sources">
+  <div class="wrap sources-inner">
+    <h2>מקורות</h2>
+
+    <h3>מקור מרכזי</h3>
+    <ol>
+      <li>Dorado, K., McDonnell, C., Edwards, R. R., &amp; Lazaridou, A. <i>Sexuality and Chronic Pain.</i> Department of Anesthesiology, Harvard Medical School, Brigham and Women's Hospital, Chestnut Hill, MA, USA.</li>
+    </ol>
+
+    <h3>מקורות המצוטטים בפרק</h3>
+    <ol>
+      <li>Ackard, D. M., Kearney-Cooke, A., &amp; Peterson, C. B. (2000). Effect of body image and self-image on women's sexual behaviors. <i>International Journal of Eating Disorders</i>, 28(4), 422–429.</li>
+      <li>Akkaya, N., Akkaya, S., Atalay, N. S., Balci, C. S., &amp; Sahin, F. (2012). Relationship between the body image and level of pain, functional status, severity of depression, and quality of life in patients with fibromyalgia syndrome. <i>Clinical Rheumatology</i>, 31(6), 983–988.</li>
+      <li>Ambler, N., Williams, A. C., Hill, P., Gunary, R., &amp; Cratchley, G. (2001). Sexual difficulties of chronic pain patients. <i>Clinical Journal of Pain</i>, 17(2), 138–145. <a href="https://pubmed.ncbi.nlm.nih.gov/11444715/" target="_blank" rel="noopener">PubMed</a></li>
+      <li>Asmundson, G. J. G., &amp; Katz, J. (2009). Understanding the co-occurrence of anxiety disorders and chronic pain. <i>Depression and Anxiety</i>, 26(10), 888–901.</li>
+      <li>Bahouq, H., Allali, F., Rkain, H., &amp; Hajjaj-Hassouni, N. (2013). Discussing sexual concerns with chronic low back pain patients. <i>Rheumatology International</i>, 33(5), 1487–1492.</li>
+      <li>Coker, A. L., Davis, K. E., Arias, I., et al. (2002). Physical and mental health effects of intimate partner violence for men and women. <i>American Journal of Preventive Medicine</i>, 23(4), 260–268.</li>
+      <li>Deyo, R. A., Von Korff, M., &amp; Duhrkoop, D. (2015). Opioids for low back pain. <i>BMJ</i>, 350, g6380.</li>
+      <li>Frohlich, P. F., &amp; Meston, C. M. (2000). Evidence that serotonin affects female sexual functioning via peripheral mechanisms. <i>Physiology &amp; Behavior</i>, 71(3–4), 383–393.</li>
+      <li>Hawton, K., Catalan, J., Martin, P., &amp; Fagg, J. (1986). Long-term outcome of sex therapy. <i>Behaviour Research and Therapy</i>, 24(6), 665–675.</li>
+      <li>Kabat-Zinn, J. (2005). <i>Coming to Our Senses: Healing Ourselves and the World Through Mindfulness.</i> Hyperion.</li>
+      <li>Kwan, K. S. H., Roberts, L. J., &amp; Swalm, D. M. (2005). Sexual dysfunction and chronic pain: the role of psychological variables and impact on quality of life. <i>European Journal of Pain</i>, 9(6), 643–652. <a href="https://pubmed.ncbi.nlm.nih.gov/16246817/" target="_blank" rel="noopener">PubMed</a></li>
+      <li>Laumann, E. O., Nicolosi, A., Glasser, D. B., et al. (2005). Sexual problems among women and men aged 40–80 years. <i>International Journal of Impotence Research</i>, 17(1), 39–57.</li>
+      <li>Meana, M., Fertel, E., &amp; Maykut, C. (2015). Genito-pelvic pain/penetration disorder. In <i>Handbook of Clinical Sexuality for Mental Health Professionals.</i></li>
+      <li>Paice, J. A. (2003). Sexuality and chronic pain. <i>American Journal of Nursing</i>, 103(1), 87–89.</li>
+      <li>Rosenbaum, T. Y. (2010). Physical therapy treatment of persistent genital arousal disorder during pregnancy. <i>Journal of Sexual Medicine</i>, 7(3), 1306–1310.</li>
+      <li>Turk, D. C., &amp; Okifuji, A. (2002). Psychological factors in chronic pain: evolution and revolution. <i>Journal of Consulting and Clinical Psychology</i>, 70(3), 678–690.</li>
+      <li>Vlaeyen, J. W. S., &amp; Linton, S. J. (2000). Fear-avoidance and its consequences in chronic musculoskeletal pain: a state of the art. <i>Pain</i>, 85(3), 317–332.</li>
+      <li>World Health Organization (2015). <i>Sexual health, human rights and the law.</i> WHO, Geneva.</li>
+    </ol>
+  </div>
+</section>
+
+<div class="disclaimer">
+  <div class="wrap">
+    <p>המידע כללי ואינו תחליף לייעוץ אישי או להתאמת טיפול. אם עולים כאן תכנים שנוגעים לך באופן אישי, ובמיוחד בכל הקשור לחוויות של פגיעה, יש עם מי לדבר ואפשר לפנות לליווי מקצועי.</p>
+  </div>
+</div>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap colophon-row">
+    <div><img src="logo-light.png" width="1000" height="478" alt="גלנוס"></div>
+    <p>
+      גלנוס, מרכז לרפואת גלי הלם
+      <span class="sep">·</span> הגדוד העברי 5, אשדוד
+      <span class="sep">·</span> <a class="num" href="tel:+972505601900">050-5601900</a>
+      <span class="sep">·</span> <a href="privacy.html">מדיניות פרטיות</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

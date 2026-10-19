@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>גלי הלם לטיפול בבעיות זקפה · גלנוס</title>
+
+<meta name="description" content="טיפול בגלי הלם בעצימות נמוכה להפרעות זקפה: איך זה עובד, למי זה מתאים, כמה זמן זה מחזיק, ומה הנתונים מראים לפי חומרת הבעיה.">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="logo-light.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;600&family=Heebo:wght@300;400;500;700&display=swap">
+
+<style>
+:root{
+  color-scheme:light only;
+  direction:rtl;
+  --paper:#FBFBFD; --surface:#FFFFFF;
+  --ink:#0F1018; --ink-2:#393B4E; --muted:#6C6F86;
+  --line:#E2E3EC; --line-2:#CBCEE2;
+  --accent:#5260AB; --accent-deep:#41508F; --accent-tint:#EEEFF8;
+  --accent-soft:#AFB7E0; --accent-dark:#323B6C;
+  --btn-fg:#FFFFFF;
+  --display:"Frank Ruhl Libre","Times New Roman",serif;
+  --body:"Heebo","Segoe UI",Arial,sans-serif;
+  --wrap:1120px; --gutter:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{
+  font-family:var(--display);font-weight:600;margin:0;
+  line-height:1.25;text-wrap:balance;letter-spacing:-.008em;
+}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+:where(a,button):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:1px}
+
+.eyebrow{
+  display:block;font-family:var(--body);
+  font-size:13.5px;font-weight:600;letter-spacing:.13em;
+  color:var(--accent);margin-bottom:12px;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--body);font-size:14px;font-weight:500;
+  padding:8px 15px;border:1px solid transparent;border-radius:2px;
+  text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+}
+.btn-solid{background:var(--accent);color:var(--btn-fg)}
+.btn-solid:hover{background:var(--accent-deep);transform:translateY(-2px)}
+.btn-line{border-color:var(--line-2);color:var(--ink);background:transparent}
+.btn-line:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+
+/* ---------- header ---------- */
+.masthead{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.masthead-row{display:flex;align-items:center;gap:12px;padding-block:11px}
+.brand{display:block;line-height:0;flex-shrink:0}
+.brand img{height:36px;width:auto}
+.masthead .spacer{margin-inline-start:auto}
+
+/* ---------- opening ---------- */
+.lede-band{background:var(--surface);border-bottom:1px solid var(--line)}
+.lede-inner{padding-block:42px 0;text-align:center}
+.lede-inner .eyebrow{margin-inline:auto}
+.lede-inner h1{font-size:clamp(31px,4.2vw,48px);margin-bottom:18px}
+.standfirst{font-size:18.5px;font-weight:300;color:var(--ink-2);max-width:56ch;margin-inline:auto}
+.standfirst span{display:block}
+
+/* the four facts, divided by hairlines */
+.keyrow{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  margin-top:34px;border-top:1px solid var(--line);
+}
+.keyrow > div{
+  padding:26px 22px 30px;text-align:center;
+  border-inline-end:1px solid var(--line);
+}
+.keyrow > div:last-child{border-inline-end:0}
+.keyrow .mark{
+  height:34px;display:grid;place-items:center;margin-bottom:14px;
+}
+.keyrow .mark svg{width:28px;height:28px;color:var(--accent);stroke-width:1.5}
+.keyrow .mark .pct{
+  font-family:var(--display);font-size:34px;font-weight:600;
+  color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;
+}
+.keyrow h3{font-family:var(--body);font-size:16.5px;font-weight:600;margin-bottom:7px;line-height:1.35}
+.keyrow p{font-size:14.5px;color:var(--ink-2);font-weight:300;line-height:1.5}
+
+/* ---------- article ---------- */
+.article{padding-block:40px 50px;max-width:74ch}
+.article h2{
+  font-size:clamp(22px,2.5vw,28px);
+  position:relative;padding-bottom:14px;margin:42px 0 18px;
+}
+.article h2::after{
+  content:"";position:absolute;inset-inline-start:0;bottom:0;
+  width:50px;height:3px;border-radius:2px;background:var(--accent);
+}
+.article h2:first-child{margin-top:0}
+.article p{color:var(--ink-2);font-weight:300}
+.article p + p{margin-top:14px}
+.article strong{font-weight:600;color:var(--ink)}
+
+/* severity comparison */
+.sev{margin:26px 0 0}
+.sev-cap{font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--muted);margin-bottom:7px}
+.sev-row{padding:16px 0;border-bottom:1px solid var(--line)}
+.sev-row:first-child{border-top:1px solid var(--line)}
+.sev-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;margin-bottom:11px;
+}
+.sev-name{font-family:var(--body);font-size:16.5px;font-weight:600;color:var(--ink)}
+.sev-nums{font-size:14.5px;color:var(--ink-2);font-weight:300}
+.sev-nums b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.sev-track{
+  position:relative;height:9px;border-radius:5px;
+  background:var(--accent-tint);overflow:hidden;
+}
+.sev-fill{position:absolute;inset-block:0;inset-inline-start:0;border-radius:5px;display:block}
+.sev-fill.short{width:var(--w);background:var(--accent-soft)}
+.sev-fill.long{width:var(--w);background:var(--accent-dark)}
+.sev-legend{
+  display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end;
+  margin-top:14px;font-size:13px;color:var(--muted);
+}
+.sev-legend span{display:inline-flex;align-items:center;gap:7px}
+.sev-legend i{width:16px;height:9px;border-radius:5px;display:inline-block}
+.sev-legend .sw-light{background:var(--accent-soft)}
+.sev-legend .sw-dark{background:var(--accent-dark)}
+
+/* hairline fact lists */
+.facts{list-style:none;margin:20px 0 0;padding:0}
+.facts li{padding:15px 0;border-bottom:1px solid var(--line)}
+.facts li:first-child{border-top:1px solid var(--line)}
+.facts li h4{
+  font-family:var(--body);font-size:16.5px;font-weight:600;
+  color:var(--ink);margin:0 0 4px;line-height:1.4;
+}
+.facts li p{font-size:15.5px;color:var(--ink-2);font-weight:300;line-height:1.55}
+
+.note{
+  background:var(--accent-tint);border:1px solid var(--line-2);
+  border-radius:3px;padding:18px 20px;margin:26px 0 0;
+}
+.note p{font-size:15.5px;color:var(--ink-2)}
+.note b{font-weight:600;color:var(--ink)}
+
+/* the three closing points */
+.takeaways{background:var(--surface);border-block:1px solid var(--line)}
+.takeaways-inner{padding-block:40px 46px}
+.takeaways h2{font-size:clamp(22px,2.5vw,28px);position:relative;padding-bottom:14px;margin-bottom:26px}
+.takeaways h2::after{
+  content:"";position:absolute;inset-inline-start:0;bottom:0;
+  width:50px;height:3px;border-radius:2px;background:var(--accent);
+}
+.take-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.take-grid > div{
+  background:var(--paper);border:1px solid var(--line);
+  border-inline-start:3px solid var(--accent);
+  border-radius:3px;padding:20px 22px;
+}
+.take-grid .tag{
+  display:block;font-size:11.5px;font-weight:600;letter-spacing:.1em;
+  color:var(--accent);margin-bottom:7px;
+}
+.take-grid h4{font-family:var(--body);font-size:16.5px;font-weight:600;margin:0 0 7px;line-height:1.4}
+.take-grid p{font-size:15px;color:var(--ink-2);font-weight:300;line-height:1.55}
+
+/* sources */
+.sources{background:var(--paper)}
+.sources-inner{padding-block:36px 44px;max-width:80ch}
+.sources h2{font-size:22px;margin-bottom:12px}
+.sources ol{margin:0;padding-inline-start:0;list-style:none;counter-reset:src}
+.sources li{
+  counter-increment:src;position:relative;
+  padding:9px 0;padding-inline-start:30px;
+  border-bottom:1px solid var(--line);
+  font-size:14px;color:var(--ink-2);line-height:1.5;
+  direction:ltr;text-align:left;
+}
+.sources li::before{
+  content:counter(src) ".";position:absolute;inset-inline-start:0;top:9px;
+  color:var(--accent);font-variant-numeric:tabular-nums;font-weight:500;
+}
+.sources li a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line-2)}
+.sources li a:hover{border-color:var(--accent)}
+
+.disclaimer{background:var(--accent-tint);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.disclaimer p{padding-block:11px;font-size:12.5px;line-height:1.5;color:var(--ink-2);text-align:center}
+
+/* footer */
+.colophon{padding-block:18px;border-top:1px solid var(--line)}
+.colophon-row{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+.colophon img{height:30px;width:auto}
+.colophon p{font-size:13.5px;color:var(--muted)}
+.colophon a{color:var(--muted);text-decoration:none}
+.colophon a:hover{color:var(--accent)}
+.colophon .num{direction:ltr;display:inline-block;font-variant-numeric:tabular-nums}
+.colophon .sep{color:var(--line-2);margin-inline:2px}
+
+@media (max-width:860px){
+  .keyrow{grid-template-columns:1fr 1fr}
+  .keyrow > div:nth-child(2n){border-inline-end:0}
+  .keyrow > div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .take-grid{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  body{font-size:16.5px}
+  /* three buttons plus the logo only just fit a phone, so the header
+     tightens instead of squeezing the logo off the edge. */
+  .brand img{height:27px}
+  .masthead-row{gap:7px}
+  .masthead .btn{padding:7px 8px;font-size:13px}
+}
+@media (max-width:390px){
+  /* narrowest phones: pull in the header's own gutter so the row stays even
+     on both sides instead of the last button sliding into the margin. */
+  .masthead .wrap{padding-inline:14px}
+  .lede-inner{padding-block:32px 0}
+  .keyrow{margin-top:26px}
+  .keyrow > div{padding:20px 14px 24px}
+  .article{padding-block:30px 38px}
+  .article h2{margin:32px 0 16px}
+  /* on a phone the name and the two numbers stop fitting on one line, and only the
+     longest row wraps. stack them always so the three rows stay identical. */
+  .sev-head{flex-direction:column;align-items:flex-start;gap:2px;margin-bottom:9px}
+  .sev-legend{justify-content:flex-start}
+  .takeaways-inner{padding-block:30px 34px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <a class="brand" href="index.html" aria-label="גלנוס, חזרה לדף הבית">
+      <img src="logo-light.png" width="1000" height="478" alt="גלנוס GALENOS, מרכז לרפואת גלי הלם ESWT">
+    </a>
+    <span class="spacer"></span>
+    <a class="btn btn-line" href="index.html">חזרה לאתר</a>
+    <a class="btn btn-line" href="articles.html">כל המאמרים</a>
+    <a class="btn btn-solid" href="index.html#contact">יצירת קשר</a>
+  </div>
+</header>
+
+<main>
+
+<section class="lede-band">
+  <div class="wrap lede-inner">
+    <span class="eyebrow">בריאות הגבר · טיפול מבוסס ראיות</span>
+    <h1>גלי הלם לטיפול בבעיות זקפה</h1>
+    <p class="standfirst">
+      <span>טיפול שלא מפצה על הבעיה. מטפל בה.</span>
+      <span>מה זה, למי זה מתאים, כמה זמן זה מחזיק, ומה הנתונים באמת מראים.</span>
+    </p>
+
+    <div class="keyrow">
+      <div>
+        <span class="mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 12h3.5l2-5.5 3 11 2.5-7 1.5 3H21"/>
+          </svg>
+        </span>
+        <h3>לא כדור. תשתית.</h3>
+        <p>כדורים מרחיבים כלי דם לכמה שעות. גלי הלם מכוונים לשפר את זרימת הדם עצמה.</p>
+      </div>
+
+      <div>
+        <span class="mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>
+          </svg>
+        </span>
+        <h3>התוצאות מחזיקות שנים</h3>
+        <p>מחקרי מעקב מראים שיפור שנשמר שנתיים ויותר לאחר סיום הטיפול, עם שיא בשנה הראשונה.</p>
+      </div>
+
+      <div>
+        <span class="mark"><span class="pct">77%</span></span>
+        <h3>הצלחה בפנייה מוקדמת</h3>
+        <p>בגברים עם בעיה קלה, שיעור השיפור המשמעותי מגיע ל־77%. ככל שפונים מוקדם, התוצאה טובה ויציבה יותר.</p>
+      </div>
+
+      <div>
+        <span class="mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<circle cx="12" cy="12" r="8.5"/><path d="M6 18 18 6"/>
+          </svg>
+        </span>
+        <h3>בלי ניתוח, בלי החלמה</h3>
+        <p>טיפול חיצוני לחלוטין. ללא הרדמה, ללא מחטים, וחזרה מיידית לשגרה.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<article class="wrap article">
+
+  <h2>למה בכלל צריך משהו מעבר לכדורים</h2>
+  <p>
+    אין שום ספק, הכדורים כמו ויאגרה וסיאליס אכן שינו את חיי המין של מיליוני גברים. עם זאת,
+    הם עושים דבר אחד: מרחיבים כלי דם לכמה שעות. אך לא משנים את הסיבה שבגללה זרימת הדם
+    נחלשה מלכתחילה.
+  </p>
+  <p>
+    זה סיוע חשוב, אך הוא מגיע עם לא מעט הגבלות: חלק מרגישים שתלויים מדי בכדור, חלק חשים
+    שהספונטניות נעלמת, ואצל חלק הכדור פשוט עובד פחות טוב עם הזמן.
+  </p>
+  <p>
+    טיפול בגלי הלם בעצימות נמוכה מציע כיוון אחר. במקום לפצות על הבעיה בזמן אמת, הוא מנסה
+    לשפר את התשתית עצמה, את כלי הדם שאמורים לספק את הדם לפין.
+  </p>
+
+  <h2>איך זה עובד, בפשטות</h2>
+  <p>
+    המכשיר שולח גלי קול בעוצמה נמוכה אל רקמת הפין. הגלים האלה לא כואבים ולא שורפים. הם
+    מייצרים גירוי מכני עדין מאוד ברקמה.
+  </p>
+  <p>
+    הגירוי הזה “מעיר” את הגוף. הוא גורם לרקמה לשחרר חומרים שמעודדים צמיחה של כלי דם קטנים
+    חדשים, ומגרה את דופן כלי הדם לייצר תחמוצת חנקן, החומר שאחראי להרפיית כלי הדם ולזרימת
+    הדם שמאפשרת זקפה.
+  </p>
+  <p>
+    <strong>במילים אחרות: במקום להרחיב בכוח צינור צר, מנסים לשפר את כל המנגנון של זרימת הדם.</strong>
+  </p>
+  <p>
+    את תהליך צמיחת כלי הדם עצמו חוקרים בעיקר במעבדה. מה שרואים בבני אדם הוא התוצאה, וגם היא
+    ניתנת למדידה.
+  </p>
+
+  <h2>מה רואים אחרי הטיפול</h2>
+  <p>
+    לאחר תהליך טיפולי בהתאם לפרוטוקול טיפולי מסודר, רואים שיפור מדיד בזרימת הדם ובתפקוד
+    הזקפתי: עלייה בכמות ובמהירות הזרימה העורקית, וגם שיפור בשמירה על הדם, הרקמה שומרת על
+    הלחץ טוב יותר.
+  </p>
+  <p>
+    כמו כן, לפי שאלון התפקוד המיני המקובל, רואים את התוצאות הבאות: שיפור משמעותי נרשם אצל
+    <strong>69% מהמטופלים</strong> אחרי שלושה חודשים, ואצל <strong>60%</strong> במעקב ארוך הטווח.
+  </p>
+  <p>הפילוח לפי חומרת הבעיה מספר את הסיפור המעניין באמת:</p>
+
+  <div class="sev">
+    <p class="sev-cap">שיעור שיפור משמעותי</p>
+    <div class="sev-row">
+      <div class="sev-head">
+        <span class="sev-name">בעיה קלה</span>
+        <span class="sev-nums">אחרי 3 חודשים <b>77%</b> · במעקב ארוך <b>71%</b></span>
+      </div>
+      <div class="sev-track">
+        <span class="sev-fill short" style="--w:77%"></span>
+        <span class="sev-fill long" style="--w:71%"></span>
+      </div>
+    </div>
+
+    <div class="sev-row">
+      <div class="sev-head">
+        <span class="sev-name">בעיה בינונית</span>
+        <span class="sev-nums">אחרי 3 חודשים <b>65%</b> · במעקב ארוך <b>53%</b></span>
+      </div>
+      <div class="sev-track">
+        <span class="sev-fill short" style="--w:65%"></span>
+        <span class="sev-fill long" style="--w:53%"></span>
+      </div>
+    </div>
+
+    <div class="sev-row">
+      <div class="sev-head">
+        <span class="sev-name">בעיה קשה</span>
+        <span class="sev-nums">אחרי 3 חודשים <b>63%</b> · במעקב ארוך <b>50%</b></span>
+      </div>
+      <div class="sev-track">
+        <span class="sev-fill short" style="--w:63%"></span>
+        <span class="sev-fill long" style="--w:50%"></span>
+      </div>
+    </div>
+
+    <div class="sev-legend">
+      <span><i class="sw-light"></i> אחרי 3 חודשים</span>
+      <span><i class="sw-dark"></i> במעקב ארוך טווח</span>
+    </div>
+  </div>
+
+  <div class="note">
+    <p>
+      <b>המסקנה:</b>
+      ככל שפונים מוקדם יותר, כך התוצאה טובה יותר ויציבה יותר. גברים שממתינים שנים עד
+      שהבעיה מחמירה מגיעים לטיפול בנקודת פתיחה פחות טובה.
+    </p>
+  </div>
+
+  <h2>כמה זמן זה מחזיק</h2>
+  <p>זו השאלה שכל אחד שואל, ומגיעה לו תשובה כנה.</p>
+  <p>
+    התוצאות נשמרות שנים, לא שבועות. במחקר מעקב נשמרה התועלת עד 30 חודשים אחרי סיום הטיפול.
+    במחקר מבוקר אחר נמצא שיפור יציב לאורך השנתיים הראשונות, עם שיא בשנה הראשונה והיחלשות
+    בין השנה השנייה לשלישית. במעקב של חמש שנים, אחוז הגברים עם שיפור משמעותי ירד מ־60%
+    בשנה הראשונה ל־40% בשנה החמישית.
+  </p>
+  <p>
+    התרגום המעשי: זה לא פתרון של פעם אחת לכל החיים, וזה גם לא כדור שנגמר אחרי ארבע שעות.
+    זו השקעה שמחזיקה שנים, ולחלק מהגברים כדאי לשקול סבב טיפול חוזר בהמשך.
+  </p>
+
+  <h2>למי זה הכי מתאים</h2>
+  <ul class="facts">
+    <li>
+      <h4>לגברים עם בעיה קלה עד בינונית</h4>
+      <p>אלה מקבלים את התוצאות הטובות והיציבות ביותר.</p>
+    </li>
+    <li>
+      <h4>לגברים שהכדורים הפסיקו לעזור להם</h4>
+      <p>מחקר מבוקר הראה שהטיפול מסוגל להחזיר חלק מהגברים האלה למצב שבו הכדורים שוב יעילים, לפני שעוברים לפתרונות פולשניים.</p>
+    </li>
+    <li>
+      <h4>לגברים עם סוכרת מאוזנת</h4>
+      <p>כאן הנתון חד: סוכרת שאינה מאוזנת מפחיתה משמעותית את סיכויי ההצלחה, בעוד שסוכרת מאוזנת כמעט לא פוגעת בהם. איזון הסוכר הוא חלק מהטיפול, לא תנאי טכני.</p>
+    </li>
+    <li>
+      <h4>ולגבי גיל</h4>
+      <p>הגיל כשלעצמו אינו מונע טיפול, ואין סיבה לפסול גבר מבוגר מראש. הממצאים המחקריים בנושא הגיל אינם אחידים, ולכן ההערכה נעשית לפי מצב כלי הדם וגורמי הסיכון האישיים ולא לפי שנת הלידה.</p>
+    </li>
+  </ul>
+
+  <h2>מה עובר על מי שמגיע לטיפול</h2>
+  <p>
+    הטיפול חיצוני לחלוטין. אין ניתוח, אין הרדמה, אין מחטים ואין אשפוז. כל מפגש נמשך זמן
+    קצר, ואפשר לחזור מיד לשגרה, לעבודה, לנהיגה, לכל דבר.
+  </p>
+  <p>
+    פרוטוקול נפוץ כולל 6 עד 12 מפגשים, בדרך כלל פעמיים בשבוע. המספר המדויק, העוצמה ומיקום
+    הטיפול נקבעים אישית.
+  </p>
+  <p>
+    תופעות לוואי נדירות וקלות: לעיתים אי־נוחות מקומית או כאב ראש קל, שחולפים מהר. במספר
+    מחקרים לא נרשמו כלל אירועים חריגים.
+  </p>
+
+  <h2>מה חשוב לדעת לפני שמחליטים</h2>
+  <p>הטיפול מבטיח, אבל לא כל־יכול, וכדאי להכיר את המגבלות:</p>
+  <p>
+    חלק מהמחקרים קטנים יחסית וללא קבוצת ביקורת. הפרוטוקולים אינם אחידים בין מרכזים ובין
+    מכשירים. ההנחיות הבינלאומיות ממקמות היום את הטיפול כאפשרות טובה לגברים עם בעיה
+    וסקולרית קלה, ולגברים שאינם מעוניינים בטיפול תרופתי או שאינו מתאים או יעיל עבורם,
+    ולא כטיפול קו ראשון לכל מטופל.
+  </p>
+  <p>
+    וכמו בכל דבר בתחום הזה: הצלחה תלויה גם בגורמים שאינם המכשיר, עישון, שומני דם, לחץ דם,
+    שינה, מתח וזוגיות. טיפול טוב מתייחס לכל אלה.
+  </p>
+
+</article>
+
+<section class="takeaways">
+  <div class="wrap takeaways-inner">
+    <h2>שלוש נקודות שכדאי לקחת מכאן</h2>
+    <div class="take-grid">
+      <div>
+        <span class="tag">כשהתרופות נגמרו</span>
+        <h4>כשהכדורים כבר לא עוזרים, זה לא סוף הדרך</h4>
+        <p>מחקר מבוקר הראה שגלי הלם מסוגלים להחזיר גברים שהפסיקו להגיב לתרופות למצב שבו הן שוב יעילות, לפני שעוברים לפתרונות פולשניים.</p>
+      </div>
+      <div>
+        <span class="tag">תזמון</span>
+        <h4>המספר החשוב ביותר הוא מתי פנית</h4>
+        <p>77% מהגברים עם בעיה קלה משיגים שיפור משמעותי, לעומת 63% במקרים קשים. הזמן פועל נגד הכלים הקטנים.</p>
+      </div>
+      <div>
+        <span class="tag">גורמי סיכון</span>
+        <h4>סוכרת מאוזנת משנה את התמונה</h4>
+        <p>הנתונים חד־משמעיים: סוכרת שאינה מאוזנת מפחיתה מאוד את סיכויי ההצלחה, ואיזון טוב כמעט מבטל את הפער. לכן הטיפול אצלנו מתחיל בהערכה מלאה ולא במכשיר.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sources">
+  <div class="wrap sources-inner">
+    <h2>מקורות</h2>
+    <ol>
+      <li>Bocchino, A. C., Pezzoli, M., Martínez-Salamanca, J. I., Russo, G. I., Lo Giudice, A., &amp; Cocci, A. (2023). Low-intensity extracorporeal shock wave therapy for erectile dysfunction: Myths and realities. <i>Investigative and Clinical Urology</i>, 64(2), 118–125. <a href="https://pubmed.ncbi.nlm.nih.gov/36882170/" target="_blank" rel="noopener">PubMed</a></li>
+      <li>Sokolakis, I., &amp; Hatzichristodoulou, G. (2019). Clinical studies on low intensity extracorporeal shockwave therapy for erectile dysfunction: a systematic review and meta-analysis of randomised controlled trials. <i>International Journal of Impotence Research</i>, 31(3), 177–194. <a href="https://pubmed.ncbi.nlm.nih.gov/30664671/" target="_blank" rel="noopener">PubMed</a></li>
+      <li>Elshorbagy, G., Elsayed, A. S., Elghoneimy, M., Abdelrassoul, M. A., Elkousy, M. M., Ragab, M. W., &amp; El Gharably, M. A. F. (2025). The efficacy of low-intensity shock wave therapy based on the stratification of erectile dysfunction patients. <i>African Journal of Urology</i>, 31, Article 17. <a href="https://doi.org/10.1186/s12301-025-00489-8" target="_blank" rel="noopener">DOI</a></li>
+      <li>Lange, M., et al. (2024). Is low-intensity shockwave therapy for erectile dysfunction a durable treatment option? Long-term outcomes of a randomized sham-controlled trial. <i>Translational Andrology and Urology</i>, 13(10), 2194–2200. <a href="https://pubmed.ncbi.nlm.nih.gov/39507860/" target="_blank" rel="noopener">PubMed</a></li>
+      <li>Chung, E., &amp; Cartmill, R. (2021). Evaluation of long-term clinical outcomes and patient satisfaction rate following low intensity shock wave therapy in men with erectile dysfunction: a minimum 5-year follow-up. <i>Sexual Medicine</i>, 9(4), 100384. <a href="https://pubmed.ncbi.nlm.nih.gov/34126432/" target="_blank" rel="noopener">PubMed</a></li>
+    </ol>
+  </div>
+</section>
+
+<div class="disclaimer">
+  <div class="wrap">
+    <p>המידע כללי ואינו תחליף לייעוץ אישי. ההתאמה לטיפול נקבעת בהערכה קלינית.</p>
+  </div>
+</div>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap colophon-row">
+    <div><img src="logo-light.png" width="1000" height="478" alt="גלנוס"></div>
+    <p>
+      גלנוס, מרכז לרפואת גלי הלם
+      <span class="sep">·</span> הגדוד העברי 5, אשדוד
+      <span class="sep">·</span> <a class="num" href="tel:+972505601900">050-5601900</a>
+      <span class="sep">·</span> <a href="privacy.html">מדיניות פרטיות</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

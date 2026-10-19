@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>מדיניות פרטיות · גלנוס</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="logo-light.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;600&family=Heebo:wght@300;400;500;700&display=swap">
+
+<style>
+:root{
+  color-scheme:light only;
+  direction:rtl;
+  --paper:#FBFBFD; --surface:#FFFFFF;
+  --ink:#0F1018; --ink-2:#393B4E; --muted:#6C6F86;
+  --line:#E2E3EC; --line-2:#CBCEE2;
+  --accent:#5260AB; --accent-deep:#41508F; --accent-tint:#EEEFF8;
+  --btn-fg:#FFFFFF;
+  --display:"Frank Ruhl Libre","Times New Roman",serif;
+  --body:"Heebo","Segoe UI",Arial,sans-serif;
+  --wrap:1120px; --gutter:22px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1{font-family:var(--display);font-weight:600;margin:0;line-height:1.25;letter-spacing:-.008em}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+:where(a,button):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:1px}
+
+.eyebrow{
+  display:block;font-size:13.5px;font-weight:600;letter-spacing:.13em;
+  color:var(--accent);margin-bottom:12px;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--body);font-size:14px;font-weight:500;
+  padding:8px 15px;border:1px solid transparent;border-radius:2px;
+  text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:background .18s ease,color .18s ease,border-color .18s ease;
+}
+.btn-line{border-color:var(--line-2);color:var(--ink);background:transparent}
+.btn-line:hover{border-color:var(--accent);color:var(--accent)}
+.btn-solid{background:var(--accent);color:var(--btn-fg)}
+.btn-solid:hover{background:var(--accent-deep)}
+
+.masthead{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.masthead-row{display:flex;align-items:center;gap:12px;padding-block:11px}
+.brand{display:block;line-height:0;flex-shrink:0}
+.brand img{height:36px;width:auto}
+.masthead .spacer{margin-inline-start:auto}
+
+.sheet{padding-block:46px 56px;max-width:70ch}
+.sheet h1{font-size:clamp(27px,3.4vw,38px);margin-bottom:16px}
+.sheet p{color:var(--ink-2);font-weight:300}
+.sheet p + p{margin-top:14px}
+
+.pending{
+  margin-top:26px;background:var(--accent-tint);
+  border:1px solid var(--line-2);border-top:3px solid var(--accent);
+  border-radius:3px;padding:20px 22px;
+}
+.pending p{font-size:15.5px;color:var(--ink-2)}
+.pending b{font-weight:600;color:var(--ink)}
+
+.colophon{padding-block:18px;border-top:1px solid var(--line)}
+.colophon-row{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+.colophon img{height:30px;width:auto}
+.colophon p{font-size:13.5px;color:var(--muted)}
+.colophon a{color:var(--muted);text-decoration:none}
+.colophon a:hover{color:var(--accent)}
+.colophon .num{direction:ltr;display:inline-block;font-variant-numeric:tabular-nums}
+.colophon .sep{color:var(--line-2);margin-inline:2px}
+
+@media (max-width:600px){
+  body{font-size:16.5px}
+  .brand img{height:31px}
+  .sheet{padding-block:34px 42px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <a class="brand" href="index.html" aria-label="גלנוס, חזרה לדף הבית">
+      <img src="logo-light.png" width="1000" height="478" alt="גלנוס GALENOS, מרכז לרפואת גלי הלם ESWT">
+    </a>
+    <span class="spacer"></span>
+    <a class="btn btn-line" href="index.html">חזרה לאתר</a>
+    <a class="btn btn-solid" href="index.html#contact">יצירת קשר</a>
+  </div>
+</header>
+
+<main>
+  <section class="wrap sheet">
+    <span class="eyebrow">גלנוס</span>
+    <h1>מדיניות פרטיות</h1>
+
+    <div class="pending">
+      <p>
+        <b>הדף הזה ממתין לתוכן.</b>
+        נוסח מדיניות הפרטיות של גלנוס יפורסם כאן. עד אז, לשאלות בנושא איסוף ושימוש בפרטים
+        שנמסרו דרך האתר אפשר לפנות אלינו בטלפון
+        <a href="tel:+972505601900" style="color:var(--accent)">050-5601900</a>.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="colophon">
+  <div class="wrap colophon-row">
+    <div><img src="logo-light.png" width="1000" height="478" alt="גלנוס"></div>
+    <p>
+      גלנוס, מרכז לרפואת גלי הלם
+      <span class="sep">·</span> הגדוד העברי 5, אשדוד
+      <span class="sep">·</span> <a class="num" href="tel:+972505601900">050-5601900</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
