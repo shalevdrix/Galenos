@@ -259,8 +259,17 @@ h1,h2,h3{
 /* ============================================================
    three domains · three columns at every width, no sideways scroll
    ============================================================ */
-.domains{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+/* the row is a subgrid, so the heading, the scope line and the button each sit on a
+   shared track. a scope that wraps to two lines no longer drags its own button below
+   the other two, and opening one list leaves the other buttons where they are.
+   minmax(0,1fr) keeps the three columns exactly equal: without it the longest scope
+   line widens its column and the three pills come out different sizes. */
+.domains{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:auto auto auto;gap:0;
+}
 .domain{
+  display:grid;grid-template-rows:subgrid;grid-row:span 3;
   padding:20px 24px;border-inline-end:1px solid var(--line);
   transition:background .2s ease;
 }
@@ -641,10 +650,10 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
   .reach li{grid-template-columns:1fr;gap:2px}
   .wa-float{inset-block-end:14px;inset-inline-end:14px;padding:12px 17px;font-size:14px}
 
-  /* three columns still, just tighter */
-  .domain{padding:14px 8px}
-  .domain:first-child{padding-inline-start:0}
-  .domain:last-child{padding-inline-end:0}
+  /* three columns still, just tighter. the padding stays equal on all three:
+     trimming it off the outer two made their cells wider than the middle one,
+     and the three pills came out different widths. */
+  .domain{padding:14px 6px}
   .domain h3{font-size:16.5px;margin-bottom:2px}
   .domain .scope{font-size:11px;margin-bottom:13px;line-height:1.35}
   .domain ul{gap:9px}
