@@ -246,6 +246,7 @@ h1,h2,h3{
 
 .mech{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
 .mech .prose p{color:var(--ink-2);font-weight:400;font-size:17.5px}
+.mech .prose p + p{margin-top:13px}
 .mech .prose strong{color:var(--ink);font-weight:500}
 .terms{list-style:none;margin:0;padding:0}
 .terms li{display:grid;gap:4px;padding:14px 0;border-bottom:1px solid var(--line)}
@@ -254,6 +255,7 @@ h1,h2,h3{
   font-family:var(--display);font-style:normal;font-size:16px;
   color:var(--accent);direction:ltr;text-align:right;
 }
+.terms b{font-size:15.5px;color:var(--ink);font-weight:600;line-height:1.4}
 .terms span{font-size:15px;color:var(--ink-2);font-weight:300;line-height:1.5}
 
 /* ============================================================
@@ -697,8 +699,9 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
       <span class="eyebrow">מרכז לרפואת גלי הלם · ESWT</span>
       <h1>גלי הלם (ESWT) לאורתופדיה, אורולוגיה וכאב כרוני</h1>
       <p class="lede">
-        רפואה רגנרטיבית היחידה שמוכחת קלינית כחלופה להתערבות כירורגית. טיפול לא פולשני,
-        בטוח ויעיל. מוכר על ידי חברות הביטוח, אגף השיקום ומשרד הביטחון.
+        רפואה רגנרטיבית מבוססת מחקר קליני, שמטפלת ברקמה עצמה ולא רק בתסמין. טיפול לא פולשני,
+        בטוח ויעיל, שבחלק מההתוויות משמש שלב שלפני התערבות כירורגית. מוכר על ידי חברות ביטוח,
+        אגף השיקום ומשרד הביטחון.
       </p>
       <div class="hero-actions">
         <a class="btn btn-solid" href="#process">
@@ -730,7 +733,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
 
       <article class="domain">
         <h3>אורתופדיה</h3>
-        <p class="scope">אורתופדיה ו<b>פציעות ספורט</b></p>
+        <p class="scope">גידים, מפרקים ו<b>פציעות ספורט</b></p>
         <details class="disclose domain-list">
           <summary>לרשימת ההתוויות <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <div class="panel">
@@ -757,7 +760,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
           <summary>לרשימת ההתוויות <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <div class="panel">
             <ul>
-              <li>הפרעות זקפה <i>Erectile Dysfunction (ED / PE)</i></li>
+              <li>הפרעות זקפה <i>Erectile Dysfunction (ED)</i></li>
               <li>דלקת ערמונית כרונית <i>Chronic Prostatitis</i></li>
               <li>כאב אגני כרוני <i>Chronic Pelvic Pain Syndrome (CP/CPPS)</i></li>
               <li>מחלת פירוני <i>Peyronie's Disease</i></li>
@@ -799,21 +802,29 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
   <section class="wrap sec">
     <div class="sec-head">
       <span class="eyebrow">המנגנון</span>
-      <h2>מה טכנולוגיית גלי הלם עושה ברקמה</h2>
+      <h2>כיצד פועלת טכנולוגיית גלי ההלם ברקמה?</h2>
     </div>
     <div class="mech">
       <div class="prose">
         <p>
-          הגל חוצה את הרקמה הרכה ומשחרר את עיקר האנרגיה שלו בנקודה אחת, בעומק שנקבע מראש.
-          הגירוי המכני בנקודה הזו אינו הורס רקמה, הוא
-          <strong>מחזיר לפעולה תהליך ריפוי שנעצר</strong>.
+          הגל האקוסטי חוצה את שכבות הרקמה הרכה מבלי לפגוע בהן, ומשחרר את עיקר האנרגיה
+          בנקודה מדויקת ובעומק שהוגדר מראש.
+        </p>
+        <p>
+          במצבים כרוניים רבים, כמו דלקות גידים ממושכות, הידבקויות פאשיה או הסתיידויות,
+          אספקת הדם לאזור ירודה, התאים הופכים לניווניים והגוף מפסיק לנסות לתקן את הנזק בעצמו.
+        </p>
+        <p>
+          הגירוי המכני אינו הורס רקמה בריאה ואינו יוצר פציעה חדשה. במקום זאת, הוא יוצר שינוי
+          לחץ מהיר ומבוקר ברמת התא (תופעה המכונה מכאנו־טרנסדוקציה), אשר "מעיר"
+          <strong>ומחזיר לפעולה תהליך ריפוי ביולוגי שנעצר</strong>.
         </p>
       </div>
       <ul class="terms">
-        <li><dfn>Neo-angiogenesis</dfn><span>יצירת כלי דם חדשים והגברת אספקת הדם לרקמה</span></li>
-        <li><dfn>Mechanotransduction</dfn><span>תרגום הגירוי המכני לאותות תאיים וגיוס גורמי גדילה</span></li>
-        <li><dfn>Calcific breakdown</dfn><span>פירוק מוקדי הסתיידות, בעיקר בגיד הכתף ובפאשיה הפלנטרית</span></li>
-        <li><dfn>Analgesic effect</dfn><span>הפחתת הרגישות של קצות עצבים באזור והקלה בכאב</span></li>
+        <li><dfn>Neo-angiogenesis</dfn><b>המרצת זרימת הדם ויצירת כלי דם זעירים</b><span>פתיחת מיקרו־חסימות ואספקת חמצן וחומרי בניין חיוניים למוקד הדלקת.</span></li>
+        <li><dfn>Mechanotransduction</dfn><b>גיוס פקטורי גדילה וחידוש קולגן</b><span>עידוד התאים לייצר סיבי רקמה בריאים ומסודרים במקום סיבים מצולקים ונוקשים.</span></li>
+        <li><dfn>Calcific breakdown</dfn><b>ריכוך ופירוק משקעי סידן</b><span>פירוק הדרגתי של הסתיידויות פתולוגיות בגיד, המאפשר לגוף לספוג ולפנות אותן באופן טבעי.</span></li>
+        <li><dfn>Analgesic effect</dfn><b>שיכוך כאב והורדת רגישות עצבית</b><span>דילול מוליכי כאב עצביים והעלאת סף הכאב המקומי להקלה מהירה וממושכת.</span></li>
       </ul>
     </div>
   </section>
@@ -837,7 +848,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
               <li><b>יצרן</b><span>Medispec, יצרנית מערכות גלי הלם שנוסדה בתל אביב ופועלת היום בעשרות מדינות</span></li>
               <li><b>סוג הגל</b><span>גל הלם ממוקד (Focused), להבדיל מגל רדיאלי שפועל בשכבות השטחיות</span></li>
               <li><b>מיקוד</b><span>עיקר האנרגיה משתחררת בעומק שנקבע מראש, ולא לאורך כל המסלול</span></li>
-              <li><b>הצוות</b><span>רופא משפחה, מטפלת מינית מוסמכת, מטפל ברפואה סינית המתמחה בכאב ופציעות ספורט, אח סיעודי מוסמך, טכנאית גלי הלם מוסמכת, מטפלת ייחודית לנשים, ומנהלת אדמיניסטרטיבית וסושיאל</span></li>
+              <li><b>הצוות</b><span>רופא משפחה, מטפלת מינית מוסמכת, מטפל ברפואה סינית המתמחה בכאב ופציעות ספורט, אח סיעודי מוסמך, טכנאית גלי הלם מוסמכת, טכנאית גלי הלם לטיפול בנשים, מטפלת ייחודית לנשים, ומנהלת אדמיניסטרציה ורשתות חברתיות</span></li>
             </ul>
           </div>
         </details>
@@ -908,6 +919,10 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
         <p>בעל ותק וניסיון של שנים רבות במרפאות כאב מובילות של קופות החולים. אמון על הטיפול בכאב כרוני ואקוטי, שיקום תנועתי ופציעות ספורט באמצעות פרוטוקולים מתקדמים.</p>
       </li>
       <li>
+        <h4>טכנאית גלי הלם לטיפול בנשים</h4>
+        <p>מבצעת את טיפולי גלי ההלם למטופלות, תחת הפרוטוקול שנקבע, ומאפשרת מענה נשי מלא לאורך כל המפגש.</p>
+      </li>
+      <li>
         <h4>אח מוסמך</h4>
         <p>אחראי על ביצוע הטיפולים האורולוגיים והפרוצדורות הקליניות בקליניקה, תחת הפרוטוקול שנקבע ובליווי ובקרה מקצועית לפי הצורך.</p>
       </li>
@@ -923,7 +938,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
     <details class="disclose caution-block">
       <summary>מידע חשוב <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
       <div class="panel caution">
-        <h2>מתי הטיפול אינו מתאים · Contraindication</h2>
+        <h2>מתי הטיפול אינו מתאים? · Contraindication</h2>
         <p>הכל בהתאם להתייעצות רפואית.</p>
         <ul>
           <li>הריון</li>
