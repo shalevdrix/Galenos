@@ -286,6 +286,21 @@ h1,h2,h3{
 .domain-list > summary{padding:8px 14px;font-size:13.5px;gap:7px}
 .domain-list > summary .chev{width:12px;height:12px}
 .domain-list .panel{margin-top:14px}
+/* the urology card carries a second control, so its row-3 cell holds both the pill
+   and the questionnaire link. the other two cards keep a bare <details> there, and
+   because every card still has exactly three children the subgrid rows stay aligned. */
+.domain-foot{display:flex;flex-direction:column;align-items:center;gap:11px;
+  width:max-content;max-width:100%}
+.domain-quiz{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--body);font-size:13.5px;font-weight:500;
+  color:var(--accent);background:transparent;
+  border:1px solid var(--line-2);border-radius:2px;
+  padding:7px 13px;text-decoration:none;line-height:1.35;
+  transition:border-color .18s ease,background .18s ease,color .18s ease;
+}
+.domain-quiz:hover{border-color:var(--accent);background:var(--surface);color:var(--accent-deep)}
+.domain-quiz .ext{width:11px;height:11px;flex:0 0 auto}
 .domain li i{
   display:block;font-style:normal;direction:ltr;text-align:right;
   font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.4;
@@ -369,7 +384,7 @@ h1,h2,h3{
   padding:13px 0;border-bottom:1px solid var(--line);font-size:15.5px;
 }
 .spec li:first-child{border-top:1px solid var(--line)}
-.spec b{font-weight:500;color:var(--muted);font-size:12px;letter-spacing:.1em;padding-top:3px}
+.spec b{font-weight:500;color:#666980;font-size:12px;letter-spacing:.1em;padding-top:3px}
 .spec span{color:var(--ink-2);font-weight:300}
 
 /* ============================================================
@@ -551,6 +566,10 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
 }
 .form-actions{display:flex;justify-content:center;margin-top:4px}
 .form-actions .btn{min-width:190px}
+.form-note{
+  font-size:13px;line-height:1.55;color:var(--muted);font-weight:300;
+  text-align:center;max-width:48ch;margin:0 auto;
+}
 .wa-inline{margin-top:20px;display:flex;justify-content:flex-start}
 .wa-icon{width:18px;height:18px;flex:0 0 auto}
 
@@ -622,7 +641,8 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
   /* יצירת קשר: name and phone share a row, the rest spans, and the box tightens */
   #contact-form{grid-template-columns:1fr 1fr;column-gap:16px;row-gap:10px}
   #contact-form > .field:nth-child(3),
-  #contact-form > .form-actions{grid-column:1 / -1}
+  #contact-form > .form-actions,
+  #contact-form > .form-note{grid-column:1 / -1}
   .contact-card{padding:20px 22px 22px;align-self:start}
   .contact .field{gap:4px}
   .contact input,.contact select{padding:9px 13px}
@@ -665,6 +685,9 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
   .domain .scope{font-size:12px;margin-bottom:12px}
   .domain-list > summary{padding:6px 8px;font-size:11.5px;gap:5px}
   .domain-list > summary .chev{width:10px;height:10px}
+  .domain-foot{gap:8px;align-items:stretch;width:auto}
+  .domain-quiz{padding:6px 8px;font-size:11px;gap:5px;justify-content:center;text-align:center}
+  .domain-quiz .ext{width:9px;height:9px}
   .stages li{padding-inline-start:32px}
   .disclose-wide > summary{font-size:16.5px;padding:13px 16px;gap:10px}
   .disclose-wide > summary .chev{width:15px;height:15px}
@@ -756,6 +779,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
       <article class="domain">
         <h3>אורולוגיה</h3>
         <p class="scope">גל הלם בעוצמה נמוכה</p>
+        <div class="domain-foot">
         <details class="disclose domain-list">
           <summary>לרשימת ההתוויות <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <div class="panel">
@@ -767,6 +791,15 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
             </ul>
           </div>
         </details>
+          <a class="domain-quiz" href="https://reonexpert.com/iief-5/"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="לשאלון העצמי IIEF-5 לתפקוד זקפה, נפתח בכרטיסייה חדשה באתר reonexpert.com">
+            לשאלון העצמי
+            <svg class="ext" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <path d="M6.5 3h-3v9.5h9.5v-3M9.5 3H13v3.5M13 3 7.5 8.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
       </article>
 
       <article class="domain">
@@ -1004,6 +1037,10 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
           <div class="form-actions">
             <button class="btn btn-solid" type="submit">שליחה</button>
           </div>
+          <p class="form-note">
+            הפרטים הנמסרים בטופס זה נשמרים בסודיות מלאה ומשמשים לצורך יצירת קשר ותיאום פגישה
+            בלבד. המידע באתר אינו מהווה ייעוץ רפואי או תחליף לבדיקה מקצועית.
+          </p>
         </form>
 
       </div>
@@ -1024,6 +1061,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
       <span class="sep">·</span> <a class="num" href="tel:+972505601900">050-5601900</a>
       <span class="sep">·</span> <a href="privacy.html">מדיניות פרטיות</a>
       <span class="sep">&middot;</span> <a href="terms.html">תקנון ותנאי שימוש</a>
+      <span class="sep">&middot;</span> <a href="accessibility.html">הצהרת נגישות</a>
     </p>
   </div>
 </footer>
