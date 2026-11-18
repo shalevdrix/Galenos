@@ -594,13 +594,22 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
    footer · thin
    ============================================================ */
 .colophon{padding-block:18px;border-top:1px solid var(--line)}
-.colophon-row{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+.colophon-row{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
 .colophon img{height:30px;width:auto}
-.colophon p{font-size:13.5px;color:var(--muted)}
+/* two tidy lines: the clinic's details on one, the legal pages on the next.
+   each item is its own flex child with nowrap, so a name or a link never
+   breaks across lines the way the single wrapping paragraph used to. */
+.colophon-text{display:flex;flex-direction:column;gap:4px;min-width:0}
+.colophon-line{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:0 7px;
+  font-size:13.5px;line-height:1.6;color:var(--muted);margin:0;
+}
+.colophon-line > *{white-space:nowrap}
 .colophon a{color:var(--muted);text-decoration:none;transition:color .18s ease}
 .colophon a:hover{color:var(--accent)}
 .colophon .num{direction:ltr;display:inline-block;font-variant-numeric:tabular-nums}
-.colophon .sep{color:var(--line-2);margin-inline:2px}
+.colophon .mail{direction:ltr;unicode-bidi:isolate}
+.colophon .sep{color:var(--line-2)}
 
 /* ============================================================
    responsive
@@ -1055,14 +1064,22 @@ input[aria-invalid="true"],select[aria-invalid="true"]{
     <div>
       <img class="on-light" src="logo-light.png" width="1000" height="478" alt="גלנוס">
     </div>
-    <p>
-      גלנוס, מרכז לרפואת גלי הלם
-      <span class="sep">·</span> הגדוד העברי 5, אשדוד
-      <span class="sep">·</span> <a class="num" href="tel:+972505601900">050-5601900</a>
-      <span class="sep">·</span> <a href="privacy.html">מדיניות פרטיות</a>
-      <span class="sep">&middot;</span> <a href="terms.html">תקנון ותנאי שימוש</a>
-      <span class="sep">&middot;</span> <a href="accessibility.html">הצהרת נגישות</a>
-    </p>
+    <div class="colophon-text">
+      <p class="colophon-line">
+        <span>הגדוד העברי 5, אשדוד</span>
+        <span class="sep">&middot;</span>
+        <a class="num" href="tel:+972505601900">050-5601900</a>
+        <span class="sep">&middot;</span>
+        <a class="mail" href="mailto:clinic@galenos.co.il">clinic@galenos.co.il</a>
+      </p>
+      <p class="colophon-line">
+        <a href="privacy.html">מדיניות פרטיות</a>
+        <span class="sep">&middot;</span>
+        <a href="terms.html">תקנון ותנאי שימוש</a>
+        <span class="sep">&middot;</span>
+        <a href="accessibility.html">הצהרת נגישות</a>
+      </p>
+    </div>
   </div>
 </footer>
 
